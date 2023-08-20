@@ -6,7 +6,7 @@
         android:id="@+id/bookmark_menu_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@android:drawable/ic_menu_info_details"
+        android:icon="@drawable/ic_settings"
         android:title="@string/title_setting"
         app:showAsAction="always" />
 </menu>

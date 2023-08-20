@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.example.winery.R
 import com.example.winery.databinding.FragmentHomeBinding
+import com.example.winery.ui.home.post.PostAdapter
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var viewPager: ViewPager2
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,5 +40,10 @@ class HomeFragment : Fragment() {
             }
         }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewPager = view.findViewById(R.id.post_pager)
+        viewPager.adapter = PostAdapter(this)
     }
 }
