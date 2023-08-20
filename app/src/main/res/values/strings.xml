@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">winery</string>
+    <string name="title_home">Home</string>
+    <string name="title_bookmark">Bookmark</string>
+    <string name="title_search">Search</string>
+    <string name="title_setting">Setting</string>
+</resources>
