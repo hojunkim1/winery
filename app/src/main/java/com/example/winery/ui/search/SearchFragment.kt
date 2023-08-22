@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.winery.MainActivity
 import com.example.winery.databinding.FragmentSearchBinding
 
@@ -22,6 +23,12 @@ class SearchFragment : Fragment() {
             val act = activity as MainActivity
             act.supportFragmentManager.popBackStack()
         }
+
+        binding.cameraButton.setOnClickListener {
+            val action = SearchFragmentDirections.actionNavigationSearchToCameraFragment()
+            findNavController().navigate(action)
+        }
+
         return binding.root
     }
 }

@@ -24,11 +24,62 @@
             android:id="@+id/action_navigation_bookmark_to_settingFragment"
             app:destination="@id/setting_fragment" />
     </fragment>
+
     <fragment
         android:id="@+id/search_fragment"
         android:name="com.example.winery.ui.search.SearchFragment"
         android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_navigation_search_to_cameraFragment"
+            app:destination="@id/camera_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/camera_fragment"
+        android:name="com.example.winery.ui.search.camera.CameraFragment"
+        android:label="Camera"
+        tools:layout="@layout/fragment_camera">
+        <action
+            android:id="@+id/action_navigation_camera_to_selectImageFragment"
+            app:destination="@id/select_image_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/select_image_fragment"
+        android:name="com.example.winery.ui.search.camera.SelectImageFragment"
+        android:label="SelectImage"
+        tools:layout="@layout/fragment_select_image">
+        <argument
+            android:name="imageUri"
+            app:argType="string"
+            android:defaultValue="" />
+        <action
+            android:id="@+id/action_navigation_selectImage_to_cameraFragment"
+            app:destination="@id/camera_fragment" />
+        <action
+            android:id="@+id/action_navigation_selectImage_to_resultOcrFragment"
+            app:destination="@id/result_ocr_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/result_ocr_fragment"
+        android:name="com.example.winery.ui.search.camera.ResultOcrFragment"
+        android:label="ResultOcr"
+        tools:layout="@layout/fragment_result_ocr">
+        <argument
+            android:name="imageUri"
+            app:argType="string"
+            android:defaultValue="" />
+        <argument
+            android:name="resultText"
+            app:argType="string"
+            android:defaultValue="" />
+        <action
+            android:id="@+id/action_navigation_result_to_cameraFragment"
+            app:destination="@id/camera_fragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/setting_fragment"
         android:name="com.example.winery.ui.setting.SettingFragment"
