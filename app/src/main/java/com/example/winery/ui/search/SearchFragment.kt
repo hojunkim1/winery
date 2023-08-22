@@ -25,8 +25,8 @@ class SearchFragment : Fragment() {
         }
 
         binding.cameraButton.setOnClickListener {
-//            val action = SearchFragmentDirections.actionNavigationSearchToCameraFragment()
-//            findNavController().navigate(action)
+            val action = SearchFragmentDirections.actionNavigationSearchToCameraFragment()
+            findNavController().navigate(action)
         }
 
         return binding.root

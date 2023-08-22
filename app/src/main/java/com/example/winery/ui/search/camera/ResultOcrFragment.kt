@@ -15,7 +15,7 @@ import androidx.exifinterface.media.ExifInterface
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.winery.databinding.FragmentSelectImageBinding
+import com.example.winery.databinding.FragmentResultOcrBinding
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
@@ -23,9 +23,10 @@ import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import java.io.FileNotFoundException
 import java.io.InputStream
 
-class SelectImageFragment : Fragment() {
-    private lateinit var binding : FragmentSelectImageBinding
+class ResultOcrFragment : Fragment() {
+    private lateinit var binding: FragmentResultOcrBinding
     private var imagePath: Uri? = null
+    private val args: ResultOcrFragmentArgs by navArgs()
 
     private var uri: Uri? = null
     private var bitmap: Bitmap? = null
@@ -34,7 +35,6 @@ class SelectImageFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val args: SelectImageFragmentArgs by navArgs()
         imagePath = Uri.parse(args.imageUri)
     }
 
@@ -43,10 +43,10 @@ class SelectImageFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSelectImageBinding.inflate(inflater)
+        binding = FragmentResultOcrBinding.inflate(inflater)
 
         imagePath?.let {
-            binding.imageView.setImageURI(it)
+            binding.imageView2.setImageURI(it)
             setImage(it)
         }
 
@@ -58,12 +58,10 @@ class SelectImageFragment : Fragment() {
 
         recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
 
-        binding.ocrButton.setOnClickListener {
-            textRecognition(recognizer)
-        }
+        binding.textInfo.text = args.resultText
 
-        binding.retryButton.setOnClickListener {
-            val action = SelectImageFragmentDirections.actionNavigationSelectImageToCameraFragment()
+        binding.resetButton.setOnClickListener {
+            val action = ResultOcrFragmentDirections.actionNavigationResultToCameraFragment()
             findNavController().navigate(action)
         }
     }
@@ -81,7 +79,7 @@ class SelectImageFragment : Fragment() {
             val `in`: InputStream? = requireActivity().contentResolver.openInputStream(uri)
             bitmap = BitmapFactory.decodeStream(`in`)
             bitmap = rotateBitmapIfNeeded(bitmap!!, uri)
-            binding.imageView.setImageBitmap(bitmap)
+            binding.imageView2.setImageBitmap(bitmap)
 
             bitmap?.let {
                 image = InputImage.fromBitmap(it, 0)
@@ -106,23 +104,4 @@ class SelectImageFragment : Fragment() {
 
         return Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
     }
-
-    private fun textRecognition(recognizer: TextRecognizer) {
-        image?.let {
-            recognizer.process(it)
-                .addOnSuccessListener { visionText ->
-                    Log.e("텍스트 인식", "성공")
-                    val resultText = visionText.text
-                    val action = SelectImageFragmentDirections.actionNavigationSelectImageToResultOcrFragment(resultText = resultText, imageUri = imagePath.toString())
-                    findNavController().navigate(action)
-                }
-                .addOnFailureListener { e ->
-                    Log.e("텍스트 인식", "실패: ${e.message}")
-                    val resultText = "텍스트 인식 실패"
-                    val action = SelectImageFragmentDirections.actionNavigationSelectImageToResultOcrFragment(resultText = resultText, imageUri = imagePath.toString())
-                    findNavController().navigate(action)
-                }
-        }
-    }
-
 }

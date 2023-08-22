@@ -20,8 +20,13 @@ import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.example.winery.R
 import com.example.winery.databinding.FragmentCameraBinding
+import com.example.winery.ui.search.SearchFragmentDirections
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.ExecutorService
@@ -100,12 +105,11 @@ class CameraFragment : Fragment() {
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Log.d(TAG, msg)
 
-//                    output.savedUri?.let { savedUri ->
-//                        val selectImageFragment = SelectImageFragment.newInstance(savedUri)
-//                        parentFragmentManager.beginTransaction()
-//                            .replace(R.id.fragmentContainerView, selectImageFragment)
-//                            .commit()
-//                    }
+                    output.savedUri?.let { savedUri ->
+                        val action = CameraFragmentDirections.actionNavigationCameraToSelectImageFragment(savedUri.toString())
+                        findNavController().navigate(action)
+                    }
+
                 }
             }
         )
@@ -128,14 +132,6 @@ class CameraFragment : Fragment() {
             imageCapture = ImageCapture.Builder()
                 .build()
 
-            val imageAnalyzer = ImageAnalysis.Builder()
-                .build()
-//                .also {
-//                    it.setAnalyzer(cameraExecutor, LuminosityAnalyzer { luma ->
-//                        Log.d(TAG, "Average luminosity: $luma")
-//                    })
-//                }
-
             // Select back camera as a default
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
@@ -145,7 +141,7 @@ class CameraFragment : Fragment() {
 
                 // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, imageCapture, imageAnalyzer)
+                    this, cameraSelector, preview, imageCapture)
 
             } catch(exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
@@ -199,33 +195,9 @@ class CameraFragment : Fragment() {
             val selectedImageUri = data?.data
             if (selectedImageUri != null) {
                 // SelectImageFragment로 이동하면서 선택한 이미지의 Uri 전달
-//                val selectImageFragment = SelectImageFragment.newInstance(selectedImageUri)
-//                parentFragmentManager.beginTransaction()
-//                    .replace(R.id.fragmentContainerView, selectImageFragment)
-//                    .commit()
+                val action = CameraFragmentDirections.actionNavigationCameraToSelectImageFragment(selectedImageUri.toString())
+                findNavController().navigate(action)
             }
         }
     }
 }
-
-//private class LuminosityAnalyzer(private val listener: LumaListener) : ImageAnalysis.Analyzer {
-//
-//    private fun ByteBuffer.toByteArray(): ByteArray {
-//        rewind()    // Rewind the buffer to zero
-//        val data = ByteArray(remaining())
-//        get(data)   // Copy the buffer into a byte array
-//        return data // Return the byte array
-//    }
-//
-//    override fun analyze(image: ImageProxy) {
-//
-//        val buffer = image.planes[0].buffer
-//        val data = buffer.toByteArray()
-//        val pixels = data.map { it.toInt() and 0xFF }
-//        val luma = pixels.average()
-//
-//        listener(luma)
-//
-//        image.close()
-//    }
-//}
