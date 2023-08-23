@@ -42,7 +42,8 @@
         tools:layout="@layout/fragment_camera">
         <action
             android:id="@+id/action_navigation_camera_to_selectImageFragment"
-            app:destination="@id/select_image_fragment" />
+            app:destination="@id/select_image_fragment"
+            app:popUpTo="@id/search_fragment" />
     </fragment>
 
     <fragment
@@ -56,10 +57,12 @@
             android:defaultValue="" />
         <action
             android:id="@+id/action_navigation_selectImage_to_cameraFragment"
-            app:destination="@id/camera_fragment" />
+            app:destination="@id/camera_fragment"
+            app:popUpTo="@id/search_fragment" />
         <action
             android:id="@+id/action_navigation_selectImage_to_resultOcrFragment"
-            app:destination="@id/result_ocr_fragment" />
+            app:destination="@id/result_ocr_fragment"
+            app:popUpTo="@id/search_fragment" />
     </fragment>
 
     <fragment
@@ -77,7 +80,8 @@
             android:defaultValue="" />
         <action
             android:id="@+id/action_navigation_result_to_cameraFragment"
-            app:destination="@id/camera_fragment" />
+            app:destination="@id/camera_fragment"
+            app:popUpTo="@id/search_fragment" />
     </fragment>
 
     <fragment
