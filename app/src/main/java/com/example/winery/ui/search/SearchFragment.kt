@@ -35,6 +35,7 @@ class SearchFragment : Fragment() {
             val act = activity as MainActivity
             act.supportFragmentManager.popBackStack()
         }
+
 //        binding.toolbarSearch.setOnMenuItemClickListener{
 //            when (it.itemId) {
 //                R.id.search_menu_search -> {
@@ -45,6 +46,14 @@ class SearchFragment : Fragment() {
 //                else -> false
 //            }
 //        }
+
+
+        binding.cameraButton.setOnClickListener {
+            val action = SearchFragmentDirections.actionNavigationSearchToCameraFragment()
+            findNavController().navigate(action)
+        }
+
+
         return binding.root
     }
 }
