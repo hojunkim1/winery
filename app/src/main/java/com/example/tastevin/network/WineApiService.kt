@@ -1,6 +1,6 @@
 package com.example.tastevin.network
 
-import com.example.tastevin.model.Wine
+import com.example.tastevin.domain.Wine
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

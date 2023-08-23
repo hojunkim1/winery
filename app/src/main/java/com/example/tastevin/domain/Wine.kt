@@ -1,4 +1,4 @@
-package com.example.tastevin.model
+package com.example.tastevin.domain
 
 data class Wine(
     val name: String,

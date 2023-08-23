@@ -1,6 +1,6 @@
 package com.example.tastevin.data
 
-import com.example.tastevin.model.Wine
+import com.example.tastevin.domain.Wine
 
 object ListData {
     val newBoard: List<Wine> = listOf(
