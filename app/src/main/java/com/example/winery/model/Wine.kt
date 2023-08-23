@@ -1,5 +1,6 @@
 package com.example.winery.model
 
 data class Wine(
-    val id: String
+    val name: String,
+    val nation: String
 )
