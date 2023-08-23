@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tastevin.R
+import com.example.tastevin.data.ListData
+import com.example.tastevin.databinding.FragmentPostBinding
 
 class PostFragment : Fragment() {
 
@@ -13,10 +15,23 @@ class PostFragment : Fragment() {
         const val ARG_OBJECT = "object"
     }
 
+    private lateinit var binding: FragmentPostBinding
+
+    private val dataset = ListData.newBoard
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_post, container, false)
+    ): View {
+        binding = FragmentPostBinding.inflate(inflater, container, false)
+        val id = arguments?.getInt(ARG_OBJECT)
+
+        id?.apply {
+            binding.postImage.setImageResource(R.drawable.wine_image)
+            binding.postTitle.text = dataset[id - 1].name
+            binding.postSubtitle.text = dataset[id - 1].nation
+        }
+
+        return binding.root
     }
 }

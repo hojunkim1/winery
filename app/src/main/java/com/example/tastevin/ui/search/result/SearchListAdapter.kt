@@ -24,7 +24,7 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.BoardListViewHo
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardListViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.search_list_item, parent, false)
+            .inflate(R.layout.item_search_list_item, parent, false)
 
         return BoardListViewHolder(adapterLayout)
     }

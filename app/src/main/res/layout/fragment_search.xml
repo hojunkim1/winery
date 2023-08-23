@@ -7,7 +7,7 @@
     tools:context=".ui.search.SearchFragment">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_search"
+        android:id="@+id/search_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -18,16 +18,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow_left" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This is Search"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_search"
-        tools:text="This is Search" />
-
 
     <EditText
         android:id="@+id/search_txt"
@@ -37,22 +27,25 @@
         android:layout_marginTop="7dp"
         android:layout_marginEnd="50dp"
         android:ems="10"
-        android:hint="검색어를 입력하세요"
+        android:hint="@string/search_text"
+        android:importantForAutofill="no"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar_search"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="@+id/search_toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
     <ImageButton
-        android:id="@+id/cameraButton"
+        android:id="@+id/search_ocr_button"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:contentDescription="Camera search button"
         android:src="@drawable/ic_search"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_search" />
+        app:layout_constraintTop_toBottomOf="@+id/search_toolbar"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

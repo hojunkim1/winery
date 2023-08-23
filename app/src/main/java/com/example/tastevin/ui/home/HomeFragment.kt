@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewPager = view.findViewById(R.id.post_pager)
+        viewPager = view.findViewById(R.id.home_post_pager)
         viewPager.adapter = PostAdapter(this)
     }
 }

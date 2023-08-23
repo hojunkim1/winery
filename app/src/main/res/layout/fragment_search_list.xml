@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_search"
+            android:id="@+id/search_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
@@ -30,14 +30,17 @@
             android:layout_marginTop="7dp"
             android:layout_marginEnd="50dp"
             android:ems="10"
-            android:hint="검색어를 입력하세요"
+            android:hint="@string/search_text"
+            android:importantForAutofill="no"
             android:inputType="text"
-            app:layout_constraintEnd_toEndOf="@+id/toolbar_search"
+            android:minHeight="48dp"
+            app:layout_constraintEnd_toEndOf="@+id/search_toolbar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/wine_list"
+            android:id="@+id/search_list_wine_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
@@ -49,8 +52,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.555"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_search"
-            tools:listitem="@layout/search_list_item" />
+            app:layout_constraintTop_toBottomOf="@+id/search_toolbar"
+            tools:listitem="@layout/item_search_list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

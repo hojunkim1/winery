@@ -6,39 +6,40 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/select_image"
         android:layout_width="390dp"
         android:layout_height="520dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="8dp"
-        android:contentDescription="Display image for analysis"
-        app:layout_constraintBottom_toTopOf="@id/ocrButton"
+        app:layout_constraintBottom_toTopOf="@id/select_ocr_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        tools:ignore="ContentDescription"
+        tools:src="@tools:sample/avatars"
+        tools:srcCompat="@drawable/wine_image" />
 
     <Button
-        android:id="@+id/ocrButton"
+        android:id="@+id/select_ocr_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="텍스트 인식"
+        android:text="@string/select_ocr_button"
         app:cornerRadius="50dp"
-        app:layout_constraintBottom_toTopOf="@id/retryButton"
+        app:layout_constraintBottom_toTopOf="@id/select_retry_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        app:layout_constraintTop_toBottomOf="@id/select_image" />
 
     <Button
-        android:id="@+id/retryButton"
+        android:id="@+id/select_retry_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="다시 촬영하기"
+        android:text="@string/select_retry_button"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ocrButton" />
+        app:layout_constraintTop_toBottomOf="@id/select_ocr_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

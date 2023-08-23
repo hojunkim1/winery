@@ -6,33 +6,35 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ocr_wine_image"
         android:layout_width="300dp"
         android:layout_height="400dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        tools:ignore="ContentDescription"
+        tools:src="@tools:sample/avatars"
+        tools:srcCompat="@drawable/wine_image" />
 
     <TextView
-        android:id="@+id/textInfo"
+        android:id="@+id/ocr_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text=""
-        app:layout_constraintEnd_toEndOf="@id/imageView2"
-        app:layout_constraintStart_toStartOf="@id/imageView2"
-        app:layout_constraintTop_toBottomOf="@id/imageView2" />
+        app:layout_constraintEnd_toEndOf="@id/ocr_wine_image"
+        app:layout_constraintStart_toStartOf="@id/ocr_wine_image"
+        app:layout_constraintTop_toBottomOf="@id/ocr_wine_image" />
 
     <Button
-        android:id="@+id/resetButton"
+        android:id="@+id/ocr_reset_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="처음으로"
+        android:text="@string/ocr_reset_button"
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

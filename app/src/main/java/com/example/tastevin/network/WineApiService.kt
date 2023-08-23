@@ -20,9 +20,8 @@ private val retrofit = Retrofit.Builder()
 
 interface WineApiService {
 
-    @GET
+    @GET("/wines")
     suspend fun getWines(): List<Wine>
-
 }
 
 object WineApi {
