@@ -30,14 +30,9 @@
         android:name="com.example.winery.ui.search.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search">
-      
-        <!--
         <action
             android:id="@+id/action_navigation_searchFragment_to_searchListFragment"
-            app:destination="@+id/search_list_fragment"/> 
-  </fragment>-->
-    
-
+            app:destination="@+id/search_list_fragment"/>
         <action
             android:id="@+id/action_navigation_search_to_cameraFragment"
             app:destination="@id/camera_fragment" />

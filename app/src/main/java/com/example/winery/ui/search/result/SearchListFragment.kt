@@ -24,7 +24,7 @@ class SearchListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSearchListBinding.inflate(inflater)
-        binding.toolbarSearch.title = "Result"
+        //binding.toolbarSearch.title = "Result"
         binding.wineList.adapter = SearchListAdapter()
         binding.toolbarSearch.setNavigationOnClickListener {
             val act = activity as MainActivity

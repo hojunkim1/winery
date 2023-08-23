@@ -36,16 +36,16 @@ class SearchFragment : Fragment() {
             act.supportFragmentManager.popBackStack()
         }
 
-//        binding.toolbarSearch.setOnMenuItemClickListener{
-//            when (it.itemId) {
-//                R.id.search_menu_search -> {
-//                    val action = SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment()
-//                    findNavController().navigate(action)
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
+        binding.toolbarSearch.setOnMenuItemClickListener{
+            when (it.itemId) {
+                R.id.search_menu_search -> {
+                    val action = SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment()
+                    findNavController().navigate(action)
+                    true
+                }
+                else -> false
+            }
+        }
 
 
         binding.cameraButton.setOnClickListener {
