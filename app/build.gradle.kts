@@ -31,8 +31,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-//        sourceCompatibility = JavaVersion.VERSION_1_8
-//        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "17"
@@ -55,7 +53,7 @@ dependencies {
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
-    // ViewModel
+    // Lifecycle
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 
@@ -64,25 +62,25 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.0")
 
     // Network
-    implementation("com.squareup.moshi:moshi-kotlin:1.9.3")
+    implementation("com.squareup.moshi:moshi-kotlin:1.13.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("io.coil-kt:coil:2.2.2")
+
+    // Camera
+    val cameraxVersion = "1.2.1"
+    implementation("androidx.camera:camera-core:${cameraxVersion}")
+    implementation("androidx.camera:camera-camera2:${cameraxVersion}")
+    implementation("androidx.camera:camera-lifecycle:${cameraxVersion}")
+    implementation("androidx.camera:camera-video:${cameraxVersion}")
+
+    implementation("androidx.camera:camera-view:${cameraxVersion}")
+    implementation("androidx.camera:camera-extensions:${cameraxVersion}")
+
+    // Text Recognition
+    implementation("com.google.android.gms:play-services-mlkit-text-recognition:19.0.0")
 
     // Test
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    // Camera
-    val cameraxVersion = "1.1.0-beta01"
-    implementation ("androidx.camera:camera-core:${cameraxVersion}")
-    implementation ("androidx.camera:camera-camera2:${cameraxVersion}")
-    implementation ("androidx.camera:camera-lifecycle:${cameraxVersion}")
-    implementation ("androidx.camera:camera-video:${cameraxVersion}")
-
-    implementation ("androidx.camera:camera-view:${cameraxVersion}")
-    implementation ("androidx.camera:camera-extensions:${cameraxVersion}")
-
-    // Text Recognition
-    implementation ("com.google.android.gms:play-services-mlkit-text-recognition:19.0.0")
 }

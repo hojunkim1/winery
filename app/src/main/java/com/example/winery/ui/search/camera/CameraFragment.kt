@@ -14,19 +14,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.example.winery.R
 import com.example.winery.databinding.FragmentCameraBinding
-import com.example.winery.ui.search.SearchFragmentDirections
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.ExecutorService
@@ -79,16 +74,18 @@ class CameraFragment : Fragment() {
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, name)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-            if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
                 put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
             }
         }
 
         // Create output options object which contains file + metadata
         val outputOptions = ImageCapture.OutputFileOptions
-            .Builder(requireActivity().contentResolver,
+            .Builder(
+                requireActivity().contentResolver,
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                contentValues)
+                contentValues
+            )
             .build()
 
         // Set up image capture listener, which is triggered after photo has
@@ -101,12 +98,15 @@ class CameraFragment : Fragment() {
                     Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
                 }
 
-                override fun onImageSaved(output: ImageCapture.OutputFileResults){
+                override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val msg = "Photo capture succeeded: ${output.savedUri}"
                     Log.d(TAG, msg)
 
                     output.savedUri?.let { savedUri ->
-                        val action = CameraFragmentDirections.actionNavigationCameraToSelectImageFragment(savedUri.toString())
+                        val action =
+                            CameraFragmentDirections.actionNavigationCameraToSelectImageFragment(
+                                savedUri.toString()
+                            )
                         findNavController().navigate(action)
                     }
 
@@ -141,9 +141,10 @@ class CameraFragment : Fragment() {
 
                 // Bind use cases to camera
                 cameraProvider.bindToLifecycle(
-                    this, cameraSelector, preview, imageCapture)
+                    this, cameraSelector, preview, imageCapture
+                )
 
-            } catch(exc: Exception) {
+            } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
             }
 
@@ -163,14 +164,17 @@ class CameraFragment : Fragment() {
 
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults:
-        IntArray) {
+        IntArray
+    ) {
         if (requestCode == REQUEST_CODE_PERMISSIONS) {
             if (allPermissionsGranted()) {
                 startCamera()
             } else {
-                Toast.makeText(requireContext(),
+                Toast.makeText(
+                    requireContext(),
                     "Permissions not granted by the user.",
-                    Toast.LENGTH_SHORT).show()
+                    Toast.LENGTH_SHORT
+                ).show()
                 requireActivity().finish()
             }
         }
@@ -195,7 +199,9 @@ class CameraFragment : Fragment() {
             val selectedImageUri = data?.data
             if (selectedImageUri != null) {
                 // SelectImageFragment로 이동하면서 선택한 이미지의 Uri 전달
-                val action = CameraFragmentDirections.actionNavigationCameraToSelectImageFragment(selectedImageUri.toString())
+                val action = CameraFragmentDirections.actionNavigationCameraToSelectImageFragment(
+                    selectedImageUri.toString()
+                )
                 findNavController().navigate(action)
             }
         }

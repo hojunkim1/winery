@@ -53,8 +53,8 @@
         tools:layout="@layout/fragment_select_image">
         <argument
             android:name="imageUri"
-            app:argType="string"
-            android:defaultValue="" />
+            android:defaultValue=""
+            app:argType="string" />
         <action
             android:id="@+id/action_navigation_selectImage_to_cameraFragment"
             app:destination="@id/camera_fragment"
@@ -72,12 +72,12 @@
         tools:layout="@layout/fragment_result_ocr">
         <argument
             android:name="imageUri"
-            app:argType="string"
-            android:defaultValue="" />
+            android:defaultValue=""
+            app:argType="string" />
         <argument
             android:name="resultText"
-            app:argType="string"
-            android:defaultValue="" />
+            android:defaultValue=""
+            app:argType="string" />
         <action
             android:id="@+id/action_navigation_result_to_cameraFragment"
             app:destination="@id/camera_fragment"

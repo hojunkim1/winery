@@ -92,7 +92,8 @@ class ResultOcrFragment : Fragment() {
 
     private fun rotateBitmapIfNeeded(bitmap: Bitmap, uri: Uri): Bitmap {
         val exif = ExifInterface(requireActivity().contentResolver.openInputStream(uri)!!)
-        val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+        val orientation =
+            exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
 
         val matrix = Matrix()
 

@@ -24,7 +24,7 @@ import java.io.FileNotFoundException
 import java.io.InputStream
 
 class SelectImageFragment : Fragment() {
-    private lateinit var binding : FragmentSelectImageBinding
+    private lateinit var binding: FragmentSelectImageBinding
     private var imagePath: Uri? = null
 
     private var uri: Uri? = null
@@ -94,7 +94,8 @@ class SelectImageFragment : Fragment() {
 
     private fun rotateBitmapIfNeeded(bitmap: Bitmap, uri: Uri): Bitmap {
         val exif = ExifInterface(requireActivity().contentResolver.openInputStream(uri)!!)
-        val orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
+        val orientation =
+            exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL)
 
         val matrix = Matrix()
 
@@ -113,13 +114,21 @@ class SelectImageFragment : Fragment() {
                 .addOnSuccessListener { visionText ->
                     Log.e("텍스트 인식", "성공")
                     val resultText = visionText.text
-                    val action = SelectImageFragmentDirections.actionNavigationSelectImageToResultOcrFragment(resultText = resultText, imageUri = imagePath.toString())
+                    val action =
+                        SelectImageFragmentDirections.actionNavigationSelectImageToResultOcrFragment(
+                            resultText = resultText,
+                            imageUri = imagePath.toString()
+                        )
                     findNavController().navigate(action)
                 }
                 .addOnFailureListener { e ->
                     Log.e("텍스트 인식", "실패: ${e.message}")
                     val resultText = "텍스트 인식 실패"
-                    val action = SelectImageFragmentDirections.actionNavigationSelectImageToResultOcrFragment(resultText = resultText, imageUri = imagePath.toString())
+                    val action =
+                        SelectImageFragmentDirections.actionNavigationSelectImageToResultOcrFragment(
+                            resultText = resultText,
+                            imageUri = imagePath.toString()
+                        )
                     findNavController().navigate(action)
                 }
         }
