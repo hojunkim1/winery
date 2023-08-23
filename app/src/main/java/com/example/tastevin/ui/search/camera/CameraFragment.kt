@@ -28,6 +28,7 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
 class CameraFragment : Fragment() {
+
     private lateinit var binding: FragmentCameraBinding
     private var imageCapture: ImageCapture? = null
     private lateinit var cameraExecutor: ExecutorService
@@ -36,9 +37,8 @@ class CameraFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCameraBinding.inflate(inflater)
-
         return binding.root
     }
 
@@ -51,11 +51,11 @@ class CameraFragment : Fragment() {
             requestPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS)
         }
 
-        binding.imageCaptureButton.setOnClickListener {
+        binding.cameraCaptureButton.setOnClickListener {
             takePhoto()
         }
 
-        binding.imageGetButton.setOnClickListener {
+        binding.cameraImageButton.setOnClickListener {
             val itt = Intent(Intent.ACTION_PICK)
             itt.type = MediaStore.Images.Media.CONTENT_TYPE
             startActivityForResult(itt, 99)
@@ -74,9 +74,7 @@ class CameraFragment : Fragment() {
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, name)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
-                put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
-            }
+            put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
         }
 
         // Create output options object which contains file + metadata
@@ -109,7 +107,6 @@ class CameraFragment : Fragment() {
                             )
                         findNavController().navigate(action)
                     }
-
                 }
             }
         )
@@ -126,7 +123,7 @@ class CameraFragment : Fragment() {
             val preview = Preview.Builder()
                 .build()
                 .also {
-                    it.setSurfaceProvider(binding.viewFinder.surfaceProvider)
+                    it.setSurfaceProvider(binding.cameraViewFinder.surfaceProvider)
                 }
 
             imageCapture = ImageCapture.Builder()
@@ -147,7 +144,6 @@ class CameraFragment : Fragment() {
             } catch (exc: Exception) {
                 Log.e(TAG, "Use case binding failed", exc)
             }
-
         }, ContextCompat.getMainExecutor(requireContext()))
     }
 

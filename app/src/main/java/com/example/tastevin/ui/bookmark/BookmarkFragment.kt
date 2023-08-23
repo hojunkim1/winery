@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import com.example.tastevin.R
 import com.example.tastevin.databinding.FragmentBookmarkBinding
 
@@ -19,20 +19,23 @@ class BookmarkFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_bookmark, container, false)
-        binding.toolbarBookmark.title = "Bookmark"
-        binding.toolbarBookmark.inflateMenu(R.menu.bookmark_menu)
-        binding.toolbarBookmark.setOnMenuItemClickListener {
+        binding.bookmarkToolbar.title = "Bookmark"
+        binding.bookmarkToolbar.inflateMenu(R.menu.bookmark_menu)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.bookmarkToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.bookmark_menu_setting -> {
                     val action =
                         BookmarkFragmentDirections.actionNavigationBookmarkToSettingFragment()
-                    findNavController().navigate(action)
+                    view.findNavController().navigate(action)
                     true
                 }
 
                 else -> false
             }
         }
-        return binding.root
     }
 }

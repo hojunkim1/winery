@@ -4,9 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import com.example.tastevin.MainActivity
 import com.example.tastevin.R
 import com.example.tastevin.databinding.FragmentSearchBinding
@@ -14,28 +13,30 @@ import com.example.tastevin.databinding.FragmentSearchBinding
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
-    private lateinit var searchEditText: EditText
-    private var savedEditTextContent: String? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSearchBinding.inflate(inflater)
-        //binding.toolbarSearch.title = "Search"
-        binding.toolbarSearch.inflateMenu(R.menu.search_menu)
-        binding.toolbarSearch.setNavigationOnClickListener {
+
+        binding.searchToolbar.inflateMenu(R.menu.search_menu)
+        binding.searchToolbar.setNavigationOnClickListener {
             val act = activity as MainActivity
             act.supportFragmentManager.popBackStack()
         }
 
-        binding.toolbarSearch.setOnMenuItemClickListener {
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        binding.searchToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.search_menu_search -> {
                     val action =
                         SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment()
-                    findNavController().navigate(action)
+                    view.findNavController().navigate(action)
                     true
                 }
 
@@ -43,13 +44,9 @@ class SearchFragment : Fragment() {
             }
         }
 
-
-        binding.cameraButton.setOnClickListener {
+        binding.searchOcrButton.setOnClickListener {
             val action = SearchFragmentDirections.actionNavigationSearchToCameraFragment()
-            findNavController().navigate(action)
+            view.findNavController().navigate(action)
         }
-
-
-        return binding.root
     }
 }

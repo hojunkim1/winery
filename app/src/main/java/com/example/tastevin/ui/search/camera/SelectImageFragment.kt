@@ -24,6 +24,7 @@ import java.io.FileNotFoundException
 import java.io.InputStream
 
 class SelectImageFragment : Fragment() {
+
     private lateinit var binding: FragmentSelectImageBinding
     private var imagePath: Uri? = null
 
@@ -42,11 +43,11 @@ class SelectImageFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSelectImageBinding.inflate(inflater)
 
         imagePath?.let {
-            binding.imageView.setImageURI(it)
+            binding.selectImage.setImageURI(it)
             setImage(it)
         }
 
@@ -58,11 +59,11 @@ class SelectImageFragment : Fragment() {
 
         recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
 
-        binding.ocrButton.setOnClickListener {
+        binding.selectOcrButton.setOnClickListener {
             textRecognition(recognizer)
         }
 
-        binding.retryButton.setOnClickListener {
+        binding.selectRetryButton.setOnClickListener {
             val action = SelectImageFragmentDirections.actionNavigationSelectImageToCameraFragment()
             findNavController().navigate(action)
         }
@@ -81,7 +82,7 @@ class SelectImageFragment : Fragment() {
             val `in`: InputStream? = requireActivity().contentResolver.openInputStream(uri)
             bitmap = BitmapFactory.decodeStream(`in`)
             bitmap = rotateBitmapIfNeeded(bitmap!!, uri)
-            binding.imageView.setImageBitmap(bitmap)
+            binding.selectImage.setImageBitmap(bitmap)
 
             bitmap?.let {
                 image = InputImage.fromBitmap(it, 0)
@@ -133,5 +134,4 @@ class SelectImageFragment : Fragment() {
                 }
         }
     }
-
 }

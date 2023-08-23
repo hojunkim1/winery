@@ -24,6 +24,7 @@ import java.io.FileNotFoundException
 import java.io.InputStream
 
 class ResultOcrFragment : Fragment() {
+
     private lateinit var binding: FragmentResultOcrBinding
     private var imagePath: Uri? = null
     private val args: ResultOcrFragmentArgs by navArgs()
@@ -42,11 +43,11 @@ class ResultOcrFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentResultOcrBinding.inflate(inflater)
 
         imagePath?.let {
-            binding.imageView2.setImageURI(it)
+            binding.ocrWineImage.setImageURI(it)
             setImage(it)
         }
 
@@ -58,9 +59,9 @@ class ResultOcrFragment : Fragment() {
 
         recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
 
-        binding.textInfo.text = args.resultText
+        binding.ocrText.text = args.resultText
 
-        binding.resetButton.setOnClickListener {
+        binding.ocrResetButton.setOnClickListener {
             val action = ResultOcrFragmentDirections.actionNavigationResultToCameraFragment()
             findNavController().navigate(action)
         }
@@ -79,7 +80,7 @@ class ResultOcrFragment : Fragment() {
             val `in`: InputStream? = requireActivity().contentResolver.openInputStream(uri)
             bitmap = BitmapFactory.decodeStream(`in`)
             bitmap = rotateBitmapIfNeeded(bitmap!!, uri)
-            binding.imageView2.setImageBitmap(bitmap)
+            binding.ocrWineImage.setImageBitmap(bitmap)
 
             bitmap?.let {
                 image = InputImage.fromBitmap(it, 0)

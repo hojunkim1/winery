@@ -9,6 +9,7 @@ import com.example.tastevin.R
 import com.example.tastevin.data.ListData
 
 class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.BoardListViewHolder>() {
+
     private val dataset = ListData.newBoard
 
     /**

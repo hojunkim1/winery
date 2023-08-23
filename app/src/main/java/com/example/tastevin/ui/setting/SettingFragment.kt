@@ -17,8 +17,8 @@ class SettingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSettingBinding.inflate(inflater)
-        binding.toolbarSetting.title = "Setting"
-        binding.toolbarSetting.setNavigationOnClickListener {
+        binding.settingToolbar.title = "Setting"
+        binding.settingToolbar.setNavigationOnClickListener {
             val act = activity as MainActivity
             act.supportFragmentManager.popBackStack()
         }

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.tastevin.R
 import com.example.tastevin.databinding.FragmentHomeBinding
@@ -22,13 +22,18 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        binding.toolbarHome.title = "Recommend"
-        binding.toolbarHome.inflateMenu(R.menu.home_menu)
-        binding.toolbarHome.setOnMenuItemClickListener {
+        binding.homeToolbar.title = "Recommend"
+        binding.homeToolbar.inflateMenu(R.menu.home_menu)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        binding.homeToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.home_menu_search -> {
                     val action = HomeFragmentDirections.actionNavigationHomeToSearchFragment()
-                    findNavController().navigate(action)
+                    view.findNavController().navigate(action)
                     true
                 }
 
@@ -39,10 +44,7 @@ class HomeFragment : Fragment() {
                 else -> false
             }
         }
-        return binding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewPager = view.findViewById(R.id.home_post_pager)
         viewPager.adapter = PostAdapter(this)
     }
