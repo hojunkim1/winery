@@ -4,18 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.winery.MainActivity
 import com.example.winery.R
 import com.example.winery.databinding.FragmentSearchBinding
-import com.example.winery.network.WineApi
-import com.example.winery.ui.search.result.SearchListAdapter
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class SearchFragment : Fragment() {
 
@@ -36,13 +30,15 @@ class SearchFragment : Fragment() {
             act.supportFragmentManager.popBackStack()
         }
 
-        binding.toolbarSearch.setOnMenuItemClickListener{
+        binding.toolbarSearch.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.search_menu_search -> {
-                    val action = SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment()
+                    val action =
+                        SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment()
                     findNavController().navigate(action)
                     true
                 }
+
                 else -> false
             }
         }

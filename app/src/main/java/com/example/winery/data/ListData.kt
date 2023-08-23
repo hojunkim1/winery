@@ -1,4 +1,5 @@
 package com.example.winery.data
+
 import com.example.winery.model.Wine
 
 object ListData {

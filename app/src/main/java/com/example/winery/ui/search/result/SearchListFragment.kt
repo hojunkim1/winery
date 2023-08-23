@@ -1,17 +1,12 @@
 package com.example.winery.ui.search.result
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import com.example.winery.MainActivity
-import com.example.winery.R
 import com.example.winery.databinding.FragmentSearchListBinding
-import com.example.winery.databinding.FragmentSettingBinding
-import com.example.winery.ui.search.SearchViewModel
 
 
 class SearchListFragment : Fragment() {
@@ -33,7 +28,6 @@ class SearchListFragment : Fragment() {
 
         return binding.root
     }
-
 
 
 }

@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_navigation_searchFragment_to_searchListFragment"
-            app:destination="@+id/search_list_fragment"/>
+            app:destination="@+id/search_list_fragment" />
         <action
             android:id="@+id/action_navigation_search_to_cameraFragment"
             app:destination="@id/camera_fragment" />
@@ -96,6 +96,6 @@
     <fragment
         android:id="@+id/search_list_fragment"
         android:name="com.example.winery.ui.search.result.SearchListFragment"
-        tools:layout="@layout/fragment_search_list"/>
+        tools:layout="@layout/fragment_search_list" />
 
 </navigation>
