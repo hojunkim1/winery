@@ -19,17 +19,16 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSearchBinding.inflate(inflater)
-
         binding.searchToolbar.inflateMenu(R.menu.search_menu)
-        binding.searchToolbar.setNavigationOnClickListener {
-            val act = activity as MainActivity
-            act.supportFragmentManager.popBackStack()
-        }
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        binding.searchToolbar.setNavigationOnClickListener {
+            val act = activity as MainActivity
+            act.supportFragmentManager.popBackStack()
+        }
 
         binding.searchToolbar.setOnMenuItemClickListener {
             when (it.itemId) {

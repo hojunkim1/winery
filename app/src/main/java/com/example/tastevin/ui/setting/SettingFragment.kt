@@ -18,10 +18,13 @@ class SettingFragment : Fragment() {
     ): View {
         binding = FragmentSettingBinding.inflate(inflater)
         binding.settingToolbar.title = "Setting"
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.settingToolbar.setNavigationOnClickListener {
             val act = activity as MainActivity
             act.supportFragmentManager.popBackStack()
         }
-        return binding.root
     }
 }

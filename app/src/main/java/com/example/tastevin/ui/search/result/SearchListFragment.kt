@@ -18,10 +18,13 @@ class SearchListFragment : Fragment() {
     ): View {
         binding = FragmentSearchListBinding.inflate(inflater)
         binding.searchListWineList.adapter = SearchListAdapter()
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.searchToolbar.setNavigationOnClickListener {
             val act = activity as MainActivity
             act.supportFragmentManager.popBackStack()
         }
-        return binding.root
     }
 }

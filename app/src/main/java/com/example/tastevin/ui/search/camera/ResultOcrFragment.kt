@@ -13,7 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.exifinterface.media.ExifInterface
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.tastevin.databinding.FragmentResultOcrBinding
 import com.google.mlkit.vision.common.InputImage
@@ -63,10 +63,11 @@ class ResultOcrFragment : Fragment() {
 
         binding.ocrResetButton.setOnClickListener {
             val action = ResultOcrFragmentDirections.actionNavigationResultToCameraFragment()
-            findNavController().navigate(action)
+            view.findNavController().navigate(action)
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
