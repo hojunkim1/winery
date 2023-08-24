@@ -12,17 +12,12 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.BoardListViewHo
 
     private val dataset = ListData.newBoard
 
-    /**
-     * Initialize view elements
-     */
     class BoardListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val boardTitle: TextView = view.findViewById(R.id.wine_name)
         val boardContent: TextView = view.findViewById(R.id.wine_nation)
     }
 
-    /**
-     * Create new views
-     */
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardListViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_search_list_item, parent, false)
