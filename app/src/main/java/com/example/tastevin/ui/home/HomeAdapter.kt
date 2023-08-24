@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tastevin.R
 import com.example.tastevin.data.ListData
@@ -39,7 +40,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.BoardListViewHolder>() {
         holder.boardContent.text = item.producer
     }
 
-    override fun getItemCount() = 4
+    override fun getItemCount() = dataset.size
 }
 
 
