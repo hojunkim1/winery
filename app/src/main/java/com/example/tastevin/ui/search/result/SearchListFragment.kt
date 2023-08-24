@@ -47,12 +47,13 @@ class SearchListFragment : Fragment() {
 
                 else -> false
             }
-
+        }
         binding.floatingActionButton.setOnClickListener {
-            val action = SearchListFragmentDirections.actionNavigationSearchListToDetailFragment()
+            val action =
+                SearchListFragmentDirections.actionNavigationSearchListToDetailFragment()
             findNavController().navigate(action)
 
         }
-    }
 
+    }
 }
