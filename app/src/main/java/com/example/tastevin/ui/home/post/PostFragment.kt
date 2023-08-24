@@ -28,8 +28,12 @@ class PostFragment : Fragment() {
 
         id?.apply {
             binding.postImage.setImageResource(R.drawable.wine_image)
-            binding.postTitle.text = dataset[id - 1].name
-            binding.postSubtitle.text = dataset[id - 1].nation
+            if (dataset[id - 1].nameEn != null) {
+                binding.postTitle.text = dataset[id - 1].nameEn
+            } else {
+                binding.postTitle.text = dataset[id - 1].nameKr
+            }
+            binding.postSubtitle.text = dataset[id - 1].producer
         }
 
         return binding.root
