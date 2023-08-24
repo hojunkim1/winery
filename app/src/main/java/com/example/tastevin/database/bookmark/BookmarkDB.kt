@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Bookmark(
+data class BookmarkDB(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "wine_id") val wineId: Int
 )

@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Wine(
+data class WineDB(
     @PrimaryKey @ColumnInfo(name = "wine_id") val id: Int,
     @ColumnInfo(name = "name_kr") val nameKr: String?,
     @ColumnInfo(name = "name_en") val nameEn: String?,
