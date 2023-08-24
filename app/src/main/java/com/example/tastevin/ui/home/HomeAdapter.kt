@@ -3,6 +3,7 @@ package com.example.tastevin.ui.home;
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tastevin.R
@@ -30,8 +31,12 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.BoardListViewHolder>() {
     override fun onBindViewHolder(holder: BoardListViewHolder, position: Int) {
         val item = dataset[position]
 
-        holder.boardTitle.text = item.name
-        holder.boardContent.text = item.nation
+        if (item.nameEn != null){
+            holder.boardTitle.text = item.nameEn
+        } else {
+            holder.boardTitle.text = item.nameKr
+        }
+        holder.boardContent.text = item.producer
     }
 
     override fun getItemCount() = 4
