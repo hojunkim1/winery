@@ -108,4 +108,5 @@
         android:name="com.example.tastevin.ui.detail.DetailFragment"
         tools:layout="@layout/fragment_detail" />
 
+
 </navigation>

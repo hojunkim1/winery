@@ -26,14 +26,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/home_post_pager"
-            android:layout_width="0dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recommend_wine"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/home_toolbar" />
+            app:layout_constraintTop_toBottomOf="@+id/home_post_pager"
+            tools:listitem="@layout/item_rank_list"/>
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/home_post_pager"
+            android:layout_width="0dp"
+            android:layout_height="350dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_toolbar">
+
+        </androidx.viewpager2.widget.ViewPager2>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

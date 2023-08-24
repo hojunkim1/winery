@@ -6,63 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.post.PostFragment">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/post_image"
         android:layout_width="0dp"
-        android:layout_height="420dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_height="320dp"
+        android:background="@android:color/transparent"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/post_tag"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription"
         tools:srcCompat="@drawable/wine_image" />
-
-    <TextView
-        android:id="@+id/post_tag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/post_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_image"
-        tools:text="#샌즈" />
-
-    <TextView
-        android:id="@+id/post_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/post_subtitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_tag"
-        tools:text="와 샌즈 아시는구나!" />
-
-    <TextView
-        android:id="@+id/post_subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_title"
-        tools:text="참고로 겁나 쎕니다" />
-
-    <Button
-        android:id="@+id/post_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/post_detail_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/post_subtitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
