@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.tastevin.MainActivity
 import com.example.tastevin.databinding.FragmentSearchListBinding
 
@@ -25,6 +26,10 @@ class SearchListFragment : Fragment() {
         binding.searchToolbar.setNavigationOnClickListener {
             val act = activity as MainActivity
             act.supportFragmentManager.popBackStack()
+        }
+        binding.floatingActionButton.setOnClickListener {
+            val action = SearchListFragmentDirections.actionNavigationSearchListToDetailFragment()
+            findNavController().navigate(action)
         }
     }
 }
