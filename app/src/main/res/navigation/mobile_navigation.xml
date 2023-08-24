@@ -96,6 +96,7 @@
     <fragment
         android:id="@+id/search_list_fragment"
         android:name="com.example.tastevin.ui.search.result.SearchListFragment"
-        tools:layout="@layout/fragment_search_list" />
+        tools:layout="@layout/fragment_search_list">
+    </fragment>
 
 </navigation>

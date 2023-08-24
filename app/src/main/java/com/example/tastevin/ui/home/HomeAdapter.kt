@@ -1,17 +1,14 @@
-package com.example.tastevin.ui.search.result
+package com.example.tastevin.ui.home;
 
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tastevin.R
 import com.example.tastevin.data.ListData
 
-class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.BoardListViewHolder>() {
-
+class HomeAdapter : RecyclerView.Adapter<HomeAdapter.BoardListViewHolder>() {
     private val dataset = ListData.newBoard
 
     class BoardListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -22,7 +19,7 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.BoardListViewHo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardListViewHolder {
         val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_search_list_item, parent, false)
+            .inflate(R.layout.item_rank_list, parent, false)
 
         return BoardListViewHolder(adapterLayout)
     }
@@ -37,5 +34,7 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.BoardListViewHo
         holder.boardContent.text = item.nation
     }
 
-    override fun getItemCount() = dataset.size
+    override fun getItemCount() = 4
 }
+
+

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="70dp"
     android:layout_margin="8dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="20dp"
@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/ocr_wine_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

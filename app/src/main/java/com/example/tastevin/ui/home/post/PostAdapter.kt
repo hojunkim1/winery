@@ -1,10 +1,16 @@
 package com.example.tastevin.ui.home.post
 
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.tastevin.R
+import com.example.tastevin.data.ListData
 
 class PostAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+    private val dataset = ListData.newBoard
 
     override fun createFragment(position: Int): Fragment {
         val fragment = PostFragment()
@@ -14,5 +20,7 @@ class PostAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
         return fragment
     }
 
-    override fun getItemCount() = 10
+
+
+    override fun getItemCount() = 3
 }
