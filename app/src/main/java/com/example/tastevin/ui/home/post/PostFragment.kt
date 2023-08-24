@@ -48,8 +48,4 @@ class PostFragment : Fragment() {
 
         return binding.root
     }
-    private fun openUrlInBrowser(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(intent)
-    }
 }

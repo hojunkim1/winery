@@ -16,11 +16,11 @@ import com.example.tastevin.databinding.FragmentSearchBinding
 class ColumnFragment : Fragment() {
     private lateinit var binding: FragmentColumnBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        arguments?.let {
+//        }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +32,7 @@ class ColumnFragment : Fragment() {
 //        val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
 //        actionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        return inflater.inflate(R.layout.fragment_column, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
