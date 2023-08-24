@@ -18,6 +18,7 @@ class DetailFragment : Fragment() {
     ): View {
         binding = FragmentDetailBinding.inflate(inflater)
         binding.recommendWineList.adapter = RecommendWineListAdapter()
+
         return binding.root
     }
 

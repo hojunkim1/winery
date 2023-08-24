@@ -39,5 +39,7 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.BoardListViewHo
         holder.boardContent.text = item.producer
     }
 
-    override fun getItemCount() = dataset.size
+    override fun getItemCount(): Int {
+        return dataset.size
+    }
 }

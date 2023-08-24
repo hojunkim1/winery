@@ -8,7 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.example.tastevin.MainActivity
 import com.example.tastevin.R
 import com.example.tastevin.databinding.FragmentHomeBinding
 import com.example.tastevin.ui.home.post.PostAdapter
@@ -25,11 +30,18 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+
+        // layout manager
+        val recyclerView = binding.rankWine
+        val spanCount = 3 // 한 줄에 표시될 아이템 개수
+        val layoutManager = GridLayoutManager(requireContext(), spanCount, RecyclerView.HORIZONTAL, false)
+        recyclerView.layoutManager = layoutManager
+
         //binding = FragmentHomeBinding.inflate(inflater)
         binding.homeToolbar.title = "tastevin"
 
         binding.homeToolbar.inflateMenu(R.menu.home_menu)
-        binding.recommendWine.adapter = HomeAdapter()
+        binding.rankWine.adapter = HomeAdapter()
         return binding.root
     }
 

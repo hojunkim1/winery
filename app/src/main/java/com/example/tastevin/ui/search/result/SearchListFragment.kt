@@ -23,6 +23,13 @@ class SearchListFragment : Fragment() {
         binding = FragmentSearchListBinding.inflate(inflater)
         binding.searchToolbar.inflateMenu(R.menu.search_menu)
         binding.searchListWineList.adapter = SearchListAdapter()
+
+        val searchListAdapter = SearchListAdapter()
+        binding.searchListWineList.adapter = searchListAdapter
+
+        val itemCount = searchListAdapter.itemCount
+        binding.totalCount.text = "와인 검색 결과 ($itemCount)"
+
         return binding.root
     }
 
