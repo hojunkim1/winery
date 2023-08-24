@@ -35,7 +35,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/home_post_pager"
-            tools:listitem="@layout/item_rank_list"/>
+            tools:listitem="@layout/item_rank_list" />
 
 
         <androidx.viewpager2.widget.ViewPager2

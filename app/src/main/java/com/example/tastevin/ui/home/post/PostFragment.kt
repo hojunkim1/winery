@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.tastevin.R
-import com.example.tastevin.data.ListData
 import com.example.tastevin.databinding.FragmentPostBinding
-import com.example.tastevin.ui.search.result.SearchListAdapter
 
 class PostFragment : Fragment() {
 
@@ -34,6 +32,7 @@ class PostFragment : Fragment() {
 
         return binding.root
     }
+
     private fun openUrlInBrowser(url: String) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         startActivity(intent)

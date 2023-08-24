@@ -86,6 +86,9 @@ dependencies {
     // Text Recognition
     implementation("com.google.android.gms:play-services-mlkit-text-recognition:19.0.0")
 
+    // logging
+    implementation("com.jakewharton.timber:timber:4.7.1")
+
     // Test
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
