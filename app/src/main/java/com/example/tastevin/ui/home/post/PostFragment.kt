@@ -9,10 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.tastevin.R
-import com.example.tastevin.data.ListData
 import com.example.tastevin.databinding.FragmentPostBinding
 import com.example.tastevin.ui.home.HomeFragmentDirections
-import com.example.tastevin.ui.search.result.SearchListAdapter
 
 class PostFragment : Fragment() {
 
@@ -48,4 +46,5 @@ class PostFragment : Fragment() {
 
         return binding.root
     }
+
 }

@@ -1,20 +1,16 @@
 package com.example.tastevin.ui.detail
 
-import android.content.Intent
-import androidx.recyclerview.widget.RecyclerView
-import com.example.tastevin.data.ListData
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tastevin.R
-import com.example.tastevin.ui.search.camera.CameraFragmentDirections
-import com.example.tastevin.ui.search.result.SearchListFragmentDirections
+import com.example.tastevin.data.ListData
 
-class RecommendWineListAdapter : RecyclerView.Adapter<RecommendWineListAdapter.RecommendWineListViewHolder>() {
+class RecommendWineListAdapter :
+    RecyclerView.Adapter<RecommendWineListAdapter.RecommendWineListViewHolder>() {
     private val dataset = ListData.newBoard
 
     /**
