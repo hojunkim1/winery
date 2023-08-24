@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="homeViewModel"
+            type="com.example.tastevin.ui.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

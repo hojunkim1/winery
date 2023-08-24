@@ -33,6 +33,7 @@ class SearchListFragment : Fragment() {
             act.supportFragmentManager.popBackStack()
         }
 
+
         // 검색버튼 누르면 현재 페이지 삭제하고 다시 생성
         binding.searchToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
@@ -46,6 +47,11 @@ class SearchListFragment : Fragment() {
 
                 else -> false
             }
+
+        binding.floatingActionButton.setOnClickListener {
+            val action = SearchListFragmentDirections.actionNavigationSearchListToDetailFragment()
+            findNavController().navigate(action)
+
         }
     }
 

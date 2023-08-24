@@ -33,8 +33,12 @@ class SearchListAdapter : RecyclerView.Adapter<SearchListAdapter.BoardListViewHo
     override fun onBindViewHolder(holder: BoardListViewHolder, position: Int) {
         val item = dataset[position]
 
-        holder.boardTitle.text = item.name
-        holder.boardContent.text = item.nation
+        if (item.nameEn != null) {
+            holder.boardTitle.text = item.nameEn
+        } else {
+            holder.boardTitle.text = item.nameKr
+        }
+        holder.boardContent.text = item.producer
     }
 
     override fun getItemCount() = dataset.size
