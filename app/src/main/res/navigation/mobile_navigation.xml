@@ -70,10 +70,14 @@
             android:id="@+id/action_navigation_selectImage_to_cameraFragment"
             app:destination="@id/camera_fragment"
             app:popUpTo="@id/search_fragment" />
+<!--        <action-->
+<!--            android:id="@+id/action_navigation_selectImage_to_resultOcrFragment"-->
+<!--            app:destination="@id/result_ocr_fragment"-->
+<!--            app:popUpTo="@id/search_fragment" />-->
         <action
-            android:id="@+id/action_navigation_selectImage_to_resultOcrFragment"
-            app:destination="@id/result_ocr_fragment"
-            app:popUpTo="@id/search_fragment" />
+            android:id="@+id/action_navigation_selectImage_to_searchListFragment"
+            app:destination="@id/search_list_fragment"
+            app:popUpTo="@id/camera_fragment" />
     </fragment>
 
     <fragment
@@ -109,6 +113,10 @@
         <argument
             android:name="search_text"
             android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="isOcr"
+            android:defaultValue="0"
             app:argType="string" />
         <action
             android:id="@+id/action_navigation_searchList_to_searchListFragment"
