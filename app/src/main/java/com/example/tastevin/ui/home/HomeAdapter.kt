@@ -48,6 +48,10 @@ class HomeAdapter(private val clickListener: WineItemClickListener) :
             holder.wineName.text = item.nameKr
         }
         holder.wineProducer.text = item.producer
+
+        holder.itemView.setOnClickListener {
+            clickListener.onWineItemClicked(item)
+        }
     }
 
     override fun getItemCount() = dataset.size
