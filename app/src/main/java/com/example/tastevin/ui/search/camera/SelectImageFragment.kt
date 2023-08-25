@@ -117,9 +117,9 @@ class SelectImageFragment : Fragment() {
                     Log.e("텍스트 인식", "성공")
                     val resultText = visionText.text
                     val action =
-                        SelectImageFragmentDirections.actionNavigationSelectImageToResultOcrFragment(
-                            resultText = resultText,
-                            imageUri = imagePath.toString()
+                        SelectImageFragmentDirections.actionNavigationSelectImageToSearchListFragment(
+                            resultText,
+                            "1"
                         )
                     findNavController().navigate(action)
                 }
@@ -127,9 +127,9 @@ class SelectImageFragment : Fragment() {
                     Log.e("텍스트 인식", "실패: ${e.message}")
                     val resultText = "텍스트 인식 실패"
                     val action =
-                        SelectImageFragmentDirections.actionNavigationSelectImageToResultOcrFragment(
-                            resultText = resultText,
-                            imageUri = imagePath.toString()
+                        SelectImageFragmentDirections.actionNavigationSelectImageToSearchListFragment(
+                            resultText,
+                            "1"
                         )
                     findNavController().navigate(action)
                 }

@@ -48,7 +48,8 @@ class SearchFragment : Fragment() {
 //                    viewModel.searchWine(searchText)
                     val action =
                         SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment(
-                            searchText
+                            searchText,
+                            "0"
                         )
                     view.findNavController().navigate(action)
                     true
@@ -63,7 +64,8 @@ class SearchFragment : Fragment() {
 //                viewModel.searchWine(searchText)
                 val action =
                     SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment(
-                        searchText
+                        searchText,
+                        "0"
                     )
                 view.findNavController().navigate(action)
                 true
