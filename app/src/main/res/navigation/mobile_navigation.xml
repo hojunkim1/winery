@@ -105,7 +105,15 @@
     <fragment
         android:id="@+id/search_list_fragment"
         android:name="com.example.tastevin.ui.search.result.SearchListFragment"
-        tools:layout="@layout/fragment_search_list"></fragment>
+        tools:layout="@layout/fragment_search_list">
+        <argument
+            android:name="search_text"
+            android:defaultValue=""
+            app:argType="string" />
+        <action
+            android:id="@+id/action_navigation_searchList_to_searchListFragment"
+            app:destination="@id/search_list_fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/detail_fragment"

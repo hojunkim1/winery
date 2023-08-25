@@ -45,7 +45,7 @@ interface Service {
      * 상위 순위권의 와인들을 가져 오기 위한 api 이다.
      * 사용 예 : .getTopWines()
      */
-    @GET("top/")
+    @GET("top")
     suspend fun getTopWines(): List<NetworkWine>
 
     /**

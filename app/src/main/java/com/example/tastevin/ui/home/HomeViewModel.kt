@@ -1,6 +1,5 @@
 package com.example.tastevin.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,29 +10,13 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class HomeViewModel() : ViewModel() {
-    private val _wineList = MutableLiveData<List<Wine>>()
-    val wineList: LiveData<List<Wine>> = _wineList
+    val topWines = MutableLiveData<List<Wine>>()
 
     init {
-        getWineList()
-    }
-
-    private fun getWineList() {
-        viewModelScope.launch {
-            try {
-                val networkWines = WineApi.retrofitService.getTopWines()
-                val wineList = networkWines.map { it.asDomainModel() }
-                _wineList.postValue(wineList)
-            } catch (e: Exception) {
-                Timber.e(e, "Error getting wine list")
-            }
-        }
-    }
-
-//    init {
 //        getWine()
-//    }
-//
+        getTopWineList()
+    }
+
 //    private fun getWine() {
 //        viewModelScope.launch {
 //            Timber.tag("JSON").d("Network started")
@@ -44,4 +27,16 @@ class HomeViewModel() : ViewModel() {
 //            }
 //        }
 //    }
+
+    private fun getTopWineList() {
+        viewModelScope.launch {
+            try {
+                val networkWines = WineApi.retrofitService.getTopWines()
+                val wines = networkWines.map { it.asDomainModel() }
+                topWines.postValue(wines)
+            } catch (e: Exception) {
+                Timber.tag("JSON").e(e.toString())
+            }
+        }
+    }
 }

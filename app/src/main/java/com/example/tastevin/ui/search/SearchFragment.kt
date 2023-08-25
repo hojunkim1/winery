@@ -1,9 +1,12 @@
 package com.example.tastevin.ui.search
 
 import android.os.Bundle
+import android.view.KeyEvent
+import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.tastevin.MainActivity
@@ -33,14 +36,24 @@ class SearchFragment : Fragment() {
         binding.searchToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.search_menu_search -> {
+                    val searchText: String = binding.searchTxt.text.toString()
                     val action =
-                        SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment()
+                        SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment(searchText)
                     view.findNavController().navigate(action)
                     true
                 }
 
                 else -> false
             }
+        }
+
+        binding.searchTxt.setOnKeyListener { v, keyCode, event ->
+            if(event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
+                        val searchText: String = binding.searchTxt.text.toString()
+                        val action = SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment(searchText)
+                        view.findNavController().navigate(action)
+            }
+            true
         }
 
         binding.searchOcrButton.setOnClickListener {
