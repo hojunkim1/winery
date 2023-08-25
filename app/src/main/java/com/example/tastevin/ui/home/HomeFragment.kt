@@ -1,12 +1,16 @@
 package com.example.tastevin.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -25,7 +29,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewPager: ViewPager2
 
-    private val viewModel: HomeViewModel by viewModels()
+//    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +52,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        binding.homeViewModel = viewModel
+//        binding.homeViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.homeToolbar.setOnMenuItemClickListener {
@@ -66,13 +70,23 @@ class HomeFragment : Fragment() {
         viewPager = view.findViewById(R.id.home_post_pager)
         viewPager.adapter = PostAdapter(this)
 
-        binding.rankWine.adapter = HomeAdapter(object: WineItemClickListener {
+        val wineAdapter = HomeAdapter(object: WineItemClickListener {
             override fun onWineItemClicked(item: Wine) {
                 val bundle = Bundle().apply {
                     putParcelable("selectedWine", item)
                 }
                 findNavController().navigate(R.id.detail_fragment, bundle)
             }
+        })
+
+//        binding.rankWine.adapter = wineAdapter
+        val rankWine = view.findViewById<RecyclerView>(R.id.rank_wine)
+        rankWine.adapter = wineAdapter
+
+        val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        viewModel.topWines.observe(viewLifecycleOwner, Observer { wines ->
+//            Log.d("HomeFragment", "Wine list size: ${wines.size}")
+            wineAdapter.updateWines(wines)
         })
     }
 }
