@@ -66,6 +66,7 @@ dependencies {
     implementation("com.squareup.moshi:moshi-kotlin:1.13.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("io.coil-kt:coil:2.2.2")
+    implementation ("com.jakewharton.timber:timber:5.0.1")
 
     // Room
     val room_version = "2.5.0"
