@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.tastevin.MainActivity
+import com.example.tastevin.R
 import com.example.tastevin.data.ListData
 import com.example.tastevin.databinding.FragmentDetailBinding
 import com.example.tastevin.domain.Wine
@@ -35,6 +36,15 @@ class DetailFragment : Fragment() {
         }
         binding.recommendWineList.layoutManager = layoutManager
 
+        binding.recommendWineList.adapter = RecommendWineListAdapter(object: WineItemClickListener {
+            override fun onWineItemClicked(item: Wine) {
+                val bundle = Bundle().apply {
+                    putParcelable("selectedWine", item)
+                }
+                findNavController().navigate(R.id.detail_fragment, bundle)
+            }
+        })
+
         return binding.root
     }
 
@@ -44,7 +54,8 @@ class DetailFragment : Fragment() {
             act.supportFragmentManager.popBackStack()
         }
 
-        val item = dataset[0]
+//        val item = dataset[0]
+        val item = arguments?.getParcelable<Wine>("selectedWine") ?: dataset[0]
 
         Glide.with(binding.wineImage)
             .load(item.url)
@@ -66,12 +77,5 @@ class DetailFragment : Fragment() {
 
         binding.priceText.text = item.price
         binding.foodListText.text = item.food
-
-        binding.recommendWineList.adapter = RecommendWineListAdapter(object: WineItemClickListener {
-            override fun onWineItemClicked(item: Wine) {
-                val action = DetailFragmentDirections.actionNavigationDetailToDetailFragment()
-                findNavController().navigate(action)
-            }
-        })
     }
 }

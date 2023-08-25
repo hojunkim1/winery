@@ -53,8 +53,10 @@ class SearchListFragment : Fragment() {
 
         val searchListAdapter = SearchListAdapter(object: WineItemClickListener {
             override fun onWineItemClicked(item: Wine) {
-                val action = SearchListFragmentDirections.actionNavigationSearchListToDetailFragment()
-                findNavController().navigate(action)
+                val bundle = Bundle().apply {
+                    putParcelable("selectedWine", item)
+                }
+                findNavController().navigate(R.id.detail_fragment, bundle)
             }
         })
 
