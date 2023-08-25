@@ -70,5 +70,6 @@ class HomeFragment : Fragment() {
 
         viewPager = view.findViewById(R.id.home_post_pager)
         viewPager.adapter = PostAdapter(this)
+
     }
 }
