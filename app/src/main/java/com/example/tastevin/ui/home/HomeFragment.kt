@@ -16,6 +16,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.tastevin.MainActivity
 import com.example.tastevin.R
 import com.example.tastevin.databinding.FragmentHomeBinding
+import com.example.tastevin.domain.Wine
+import com.example.tastevin.ui.detail.WineItemClickListener
 import com.example.tastevin.ui.home.post.PostAdapter
 
 class HomeFragment : Fragment() {
@@ -41,7 +43,6 @@ class HomeFragment : Fragment() {
         binding.homeToolbar.title = "tastevin"
 
         binding.homeToolbar.inflateMenu(R.menu.home_menu)
-        binding.rankWine.adapter = HomeAdapter()
         return binding.root
     }
 
@@ -64,5 +65,12 @@ class HomeFragment : Fragment() {
 
         viewPager = view.findViewById(R.id.home_post_pager)
         viewPager.adapter = PostAdapter(this)
+
+        binding.rankWine.adapter = HomeAdapter(object: WineItemClickListener {
+            override fun onWineItemClicked(item: Wine) {
+                val action = HomeFragmentDirections.actionNavigationHomeToDetailFragment()
+                findNavController().navigate(action)
+            }
+        })
     }
 }

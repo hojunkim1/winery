@@ -15,7 +15,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/ocr_wine_image"
+            android:id="@+id/wine_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +25,7 @@
             tools:srcCompat="@drawable/wine_image" />
 
         <LinearLayout
-            android:layout_width="300dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="20dp"
@@ -33,7 +33,7 @@
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ocr_wine_image"
+            app:layout_constraintStart_toEndOf="@+id/wine_image"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
@@ -47,7 +47,7 @@
                 tools:text="Name" />
 
             <TextView
-                android:id="@+id/wine_nation"
+                android:id="@+id/wine_producer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/darker_gray"

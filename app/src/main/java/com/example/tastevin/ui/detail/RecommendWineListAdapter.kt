@@ -6,10 +6,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.tastevin.R
 import com.example.tastevin.data.ListData
+import com.example.tastevin.domain.Wine
 
-class RecommendWineListAdapter :
+interface WineItemClickListener {
+    fun onWineItemClicked(item: Wine)
+}
+
+class RecommendWineListAdapter(private val clickListener: WineItemClickListener) :
     RecyclerView.Adapter<RecommendWineListAdapter.RecommendWineListViewHolder>() {
     private val dataset = ListData.newBoard
 
@@ -39,7 +45,9 @@ class RecommendWineListAdapter :
         val item = dataset[position]
 
         // image URL로 받아오기
-//        holder.wineImage.
+        Glide.with(holder.itemView.context)
+            .load(item.url)
+            .into(holder.wineImage)
         if (item.nameEn != null) {
             holder.wineName.text = item.nameEn
         } else {
@@ -48,9 +56,9 @@ class RecommendWineListAdapter :
         holder.wineProducer.text = item.producer
 
         holder.itemView.setOnClickListener {
-
+            clickListener.onWineItemClicked(item)
         }
     }
 
-    override fun getItemCount() = dataset.size
+    override fun getItemCount() = 3
 }

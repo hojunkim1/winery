@@ -3,18 +3,23 @@ package com.example.tastevin.ui.home;
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.tastevin.R
 import com.example.tastevin.data.ListData
+import com.example.tastevin.ui.detail.WineItemClickListener
 
-class HomeAdapter : RecyclerView.Adapter<HomeAdapter.BoardListViewHolder>() {
+class HomeAdapter(private val clickListener: WineItemClickListener) :
+    RecyclerView.Adapter<HomeAdapter.BoardListViewHolder>() {
     private val dataset = ListData.newBoard
 
     class BoardListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val boardTitle: TextView = view.findViewById(R.id.wine_name)
-        val boardContent: TextView = view.findViewById(R.id.wine_nation)
+        val wineImage: ImageView = view.findViewById(R.id.wine_image)
+        val wineName: TextView = view.findViewById(R.id.wine_name)
+        val wineProducer: TextView = view.findViewById(R.id.wine_producer)
     }
 
 
@@ -31,12 +36,15 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.BoardListViewHolder>() {
     override fun onBindViewHolder(holder: BoardListViewHolder, position: Int) {
         val item = dataset[position]
 
+        Glide.with(holder.itemView.context)
+            .load(item.url)
+            .into(holder.wineImage)
         if (item.nameEn != null) {
-            holder.boardTitle.text = item.nameEn
+            holder.wineName.text = item.nameEn
         } else {
-            holder.boardTitle.text = item.nameKr
+            holder.wineName.text = item.nameKr
         }
-        holder.boardContent.text = item.producer
+        holder.wineProducer.text = item.producer
     }
 
     override fun getItemCount() = dataset.size
