@@ -16,9 +16,6 @@
         <action
             android:id="@+id/action_navigation_home_to_columnFragment"
             app:destination="@id/column_fragment"/>
-        <action
-            android:id="@+id/action_navigation_home_to_detailFragment"
-            app:destination="@id/detail_fragment" />
     </fragment>
 
     <fragment
@@ -109,18 +106,12 @@
         android:id="@+id/search_list_fragment"
         android:name="com.example.tastevin.ui.search.result.SearchListFragment"
         tools:layout="@layout/fragment_search_list">
-        <action
-            android:id="@+id/action_navigation_searchList_to_detailFragment"
-            app:destination="@id/detail_fragment" />
     </fragment>
 
     <fragment
         android:id="@+id/detail_fragment"
         android:name="com.example.tastevin.ui.detail.DetailFragment"
         tools:layout="@layout/fragment_detail" >
-        <action
-            android:id="@+id/action_navigation_detail_to_detailFragment"
-            app:destination="@id/detail_fragment" />
     </fragment>
 
 

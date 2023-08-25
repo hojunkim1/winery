@@ -68,8 +68,10 @@ class HomeFragment : Fragment() {
 
         binding.rankWine.adapter = HomeAdapter(object: WineItemClickListener {
             override fun onWineItemClicked(item: Wine) {
-                val action = HomeFragmentDirections.actionNavigationHomeToDetailFragment()
-                findNavController().navigate(action)
+                val bundle = Bundle().apply {
+                    putParcelable("selectedWine", item)
+                }
+                findNavController().navigate(R.id.detail_fragment, bundle)
             }
         })
     }
