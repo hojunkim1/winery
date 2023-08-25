@@ -1,4 +1,4 @@
-package com.example.tastevin.ui.home
+package com.example.tastevin.ui.search.result
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,20 +9,16 @@ import com.example.tastevin.network.asDomainModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class HomeViewModel() : ViewModel() {
-    val topWines = MutableLiveData<List<Wine>>()
+class SearchListViewModel: ViewModel() {
+    val searchWines = MutableLiveData<List<Wine>>()
 
-    init {
-        getTopWineList()
-    }
-
-    private fun getTopWineList() {
+    fun searchWine(searchText: String) {
         viewModelScope.launch {
             Timber.tag("JSON").d("Network started")
             try {
-                val networkWines = WineApi.retrofitService.getTopWines()
+                val networkWines = WineApi.retrofitService.searchWine(searchText, "")
                 val wines = networkWines.map { it.asDomainModel() }
-                topWines.postValue(wines)
+                searchWines.postValue(wines)
                 Timber.tag("JSON").d(networkWines.toString())
             } catch (e: Exception) {
                 Timber.tag("JSON").e(e.toString())

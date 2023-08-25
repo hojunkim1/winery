@@ -9,12 +9,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tastevin.R
 import com.example.tastevin.data.ListData
+import com.example.tastevin.domain.Wine
 import com.example.tastevin.ui.detail.WineItemClickListener
 
 class SearchListAdapter(private val clickListener: WineItemClickListener) :
     RecyclerView.Adapter<SearchListAdapter.BoardListViewHolder>() {
 
-    private val dataset = ListData.newBoard
+//    private val dataset = ListData.newBoard
+    private var dataset: List<Wine> = listOf()
+
+    fun updateWines(newWines: List<Wine>) {
+        dataset = newWines
+        notifyDataSetChanged()
+    }
 
     class BoardListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val wineImage: ImageView = view.findViewById(R.id.wine_image)
