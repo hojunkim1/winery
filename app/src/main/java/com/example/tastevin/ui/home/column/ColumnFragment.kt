@@ -1,17 +1,12 @@
 package com.example.tastevin.ui.home.column
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.example.tastevin.MainActivity
-import com.example.tastevin.R
 import com.example.tastevin.databinding.FragmentColumnBinding
-import com.example.tastevin.databinding.FragmentSearchBinding
 
 class ColumnFragment : Fragment() {
     private lateinit var binding: FragmentColumnBinding

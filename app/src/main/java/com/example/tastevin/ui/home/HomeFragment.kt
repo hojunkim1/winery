@@ -40,7 +40,8 @@ class HomeFragment : Fragment() {
         // layout manager
         val recyclerView = binding.rankWine
         val spanCount = 3 // 한 줄에 표시될 아이템 개수
-        val layoutManager = GridLayoutManager(requireContext(), spanCount, RecyclerView.HORIZONTAL, false)
+        val layoutManager =
+            GridLayoutManager(requireContext(), spanCount, RecyclerView.HORIZONTAL, false)
         recyclerView.layoutManager = layoutManager
 
         //binding = FragmentHomeBinding.inflate(inflater)
