@@ -29,8 +29,6 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewPager: ViewPager2
 
-//    private val viewModel: HomeViewModel by viewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,7 +51,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-//        binding.homeViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.homeToolbar.setOnMenuItemClickListener {
@@ -80,13 +77,11 @@ class HomeFragment : Fragment() {
             }
         })
 
-//        binding.rankWine.adapter = wineAdapter
         val rankWine = view.findViewById<RecyclerView>(R.id.rank_wine)
         rankWine.adapter = wineAdapter
 
         val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         viewModel.topWines.observe(viewLifecycleOwner, Observer { wines ->
-//            Log.d("HomeFragment", "Wine list size: ${wines.size}")
             wineAdapter.updateWines(wines)
         })
     }

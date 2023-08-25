@@ -18,7 +18,10 @@ data class Wine(
     val price: String?,
     val food: String,
     val url: String,
-    val count: Int
+    val count: Int,
+    val recommend1: Int? = null,
+    val recommend2: Int? = null,
+    val recommend3: Int? = null
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
@@ -34,29 +37,19 @@ data class Wine(
         parcel.readString(),
         parcel.readString()!!,
         parcel.readString()!!,
-        parcel.readInt()
+        parcel.readInt(),
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readValue(Int::class.java.classLoader) as? Int
     ) {
     }
 
     override fun describeContents(): Int {
-        return 0
+        TODO("Not yet implemented")
     }
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
-        dest.writeInt(id)
-        dest.writeString(nameKr)
-        dest.writeString(nameEn)
-        dest.writeString(producer)
-        dest.writeString(nation)
-        dest.writeString(type)
-        dest.writeInt(sweet)
-        dest.writeInt(acidity)
-        dest.writeInt(body)
-        dest.writeInt(tannin)
-        dest.writeString(price)
-        dest.writeString(food)
-        dest.writeString(url)
-        dest.writeInt(count)
+        TODO("Not yet implemented")
     }
 
     companion object CREATOR : Parcelable.Creator<Wine> {
@@ -68,7 +61,6 @@ data class Wine(
             return arrayOfNulls(size)
         }
     }
-
 }
 
 fun Wine.asDatabaseModel(): RoomWine {

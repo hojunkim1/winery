@@ -36,15 +36,15 @@ class DetailFragment : Fragment() {
         }
         binding.recommendWineList.layoutManager = layoutManager
 
-        binding.recommendWineList.adapter =
-            RecommendWineListAdapter(object : WineItemClickListener {
-                override fun onWineItemClicked(item: Wine) {
-                    val bundle = Bundle().apply {
-                        putParcelable("selectedWine", item)
-                    }
-                    findNavController().navigate(R.id.detail_fragment, bundle)
-                }
-            })
+//        binding.recommendWineList.adapter =
+//            RecommendWineListAdapter(object : WineItemClickListener {
+//                override fun onWineItemClicked(item: Wine) {
+//                    val bundle = Bundle().apply {
+//                        putParcelable("selectedWine", item)
+//                    }
+//                    findNavController().navigate(R.id.detail_fragment, bundle)
+//                }
+//            })
 
         return binding.root
     }

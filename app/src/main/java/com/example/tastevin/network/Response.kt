@@ -19,6 +19,9 @@ data class NetworkWine(
     @Json val food: String,
     @Json(name = "pic_url") val url: String,
     @Json val count: Int,
+    @Json val recommend1: Int?,
+    @Json val recommend2: Int?,
+    @Json val recommend3: Int?
 )
 
 fun NetworkWine.asDomainModel(): Wine {
@@ -36,7 +39,10 @@ fun NetworkWine.asDomainModel(): Wine {
         price = price,
         food = food,
         url = url,
-        count = count
+        count = count,
+        recommend1 = recommend1,
+        recommend2 = recommend2,
+        recommend3 = recommend3
     )
 }
 

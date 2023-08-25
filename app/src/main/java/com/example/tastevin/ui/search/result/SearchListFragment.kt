@@ -11,20 +11,27 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tastevin.MainActivity
 import com.example.tastevin.R
 import com.example.tastevin.databinding.FragmentSearchListBinding
 import com.example.tastevin.domain.Wine
 import com.example.tastevin.ui.detail.WineItemClickListener
+import com.example.tastevin.ui.home.HomeViewModel
 import com.example.tastevin.ui.search.SearchFragmentDirections
+import com.example.tastevin.ui.search.SearchViewModel
 
 class SearchListFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchListBinding
     private val args: SearchListFragmentArgs by navArgs()
+//    private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,11 +90,25 @@ class SearchListFragment : Fragment() {
             }
         })
 
-        binding.searchToolbar.inflateMenu(R.menu.search_menu)
-        binding.searchListWineList.adapter = searchListAdapter
+//        binding.searchListWineList.adapter = searchListAdapter
+//
+//        viewModel.searchWines.observe(viewLifecycleOwner, Observer { wines ->
+//            searchListAdapter.updateWines(wines)
+//            binding.totalCount.text = "와인 검색 결과 (${wines.size})"
+//        })
+//
+//        binding.searchToolbar.inflateMenu(R.menu.search_menu)
+        val searchWine = view.findViewById<RecyclerView>(R.id.search_list_wine_list)
+        searchWine.adapter = searchListAdapter
 
-        val itemCount = searchListAdapter.itemCount
-        binding.totalCount.text = "와인 검색 결과 ($itemCount)"
+        val viewModel = ViewModelProvider(this).get(SearchListViewModel::class.java)
+
+        viewModel.searchWine(args.searchText)
+
+        viewModel.searchWines.observe(viewLifecycleOwner, Observer { wines ->
+            searchListAdapter.updateWines(wines)
+            binding.totalCount.text = "와인 검색 결과 (${wines.size})"
+        })
 
     }
 }

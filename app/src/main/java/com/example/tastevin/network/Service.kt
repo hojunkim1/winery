@@ -35,7 +35,7 @@ interface Service {
      * 단순 검색을 위한 api 로, 입력 받은 데이터를 전달하면 유사 와인 리스트가 온다.
      * 사용 예: .searchWine("wine_name", "en")
      */
-    @GET("wines/search/{text}")
+    @POST("wines/search/{text}")
     suspend fun searchWine(
         @Path("text") text: String,
         @Query("lang") lang: String
