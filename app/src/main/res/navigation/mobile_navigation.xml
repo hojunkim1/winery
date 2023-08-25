@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_navigation_home_to_columnFragment"
             app:destination="@id/column_fragment"/>
+        <action
+            android:id="@+id/action_navigation_home_to_detailFragment"
+            app:destination="@id/detail_fragment" />
     </fragment>
 
     <fragment

@@ -45,7 +45,6 @@ class RecommendWineListAdapter(private val clickListener: WineItemClickListener)
         val item = dataset[position]
 
         // image URL로 받아오기
-//        holder.wineImage.
         Glide.with(holder.itemView.context)
             .load(item.url)
             .into(holder.wineImage)
