@@ -16,17 +16,20 @@
 
         <ImageView
             android:id="@+id/wine_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="ContentDescription"
             tools:srcCompat="@drawable/wine_image" />
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:id="@+id/linearLayout"
+            android:layout_width="317dp"
+            android:layout_height="61dp"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="20dp"
             android:layout_weight="1"
