@@ -4,18 +4,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tastevin.R
-import com.example.tastevin.data.ListData
 import com.example.tastevin.domain.Wine
-import com.example.tastevin.network.NetworkWine
 
-class HomeAdapter: RecyclerView.Adapter<HomeAdapter.ViewHolder>()  {
+class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     private val wines: MutableList<Wine> = mutableListOf()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_rank_list, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_rank_list, parent, false)
         return ViewHolder(itemView)
     }
 

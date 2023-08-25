@@ -11,7 +11,6 @@ import com.example.tastevin.MainActivity
 import com.example.tastevin.R
 import com.example.tastevin.databinding.FragmentSearchListBinding
 import com.example.tastevin.domain.Wine
-import com.example.tastevin.ui.detail.RecommendWineListAdapter
 import com.example.tastevin.ui.detail.WineItemClickListener
 import com.example.tastevin.ui.search.SearchFragmentDirections
 
@@ -51,7 +50,7 @@ class SearchListFragment : Fragment() {
             }
         }
 
-        val searchListAdapter = SearchListAdapter(object: WineItemClickListener {
+        val searchListAdapter = SearchListAdapter(object : WineItemClickListener {
             override fun onWineItemClicked(item: Wine) {
                 val bundle = Bundle().apply {
                     putParcelable("selectedWine", item)

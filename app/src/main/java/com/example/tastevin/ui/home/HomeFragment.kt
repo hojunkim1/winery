@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -34,7 +33,8 @@ class HomeFragment : Fragment() {
         //layout manager
         val recyclerView = binding.rankWine
         val spanCount = 3 // 한 줄에 표시될 아이템 개수
-        val layoutManager = GridLayoutManager(requireContext(), spanCount, RecyclerView.HORIZONTAL, false)
+        val layoutManager =
+            GridLayoutManager(requireContext(), spanCount, RecyclerView.HORIZONTAL, false)
         recyclerView.layoutManager = layoutManager
 
         binding.homeToolbar.title = "tastevin"
