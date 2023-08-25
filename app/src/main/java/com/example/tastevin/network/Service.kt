@@ -10,7 +10,8 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-private const val BASE_URL = "http://10.0.2.2:8000/"
+private const val BASE_URL = "http://192.168.0.13:8000/"
+    //"http://10.0.2.2:8000/"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -44,7 +45,7 @@ interface Service {
      * 상위 순위권의 와인들을 가져 오기 위한 api 이다.
      * 사용 예 : .getTopWines()
      */
-    @GET("top")
+    @GET("top/")
     suspend fun getTopWines(): List<NetworkWine>
 
     /**
