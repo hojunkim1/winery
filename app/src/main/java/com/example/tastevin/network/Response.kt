@@ -4,6 +4,11 @@ import com.example.tastevin.database.entity.RoomWine
 import com.example.tastevin.domain.Wine
 import com.squareup.moshi.Json
 
+data class NetworkWineRecommend(
+    @Json(name = "detail") val wine: NetworkWine,
+    @Json(name = "recommendations") val recommendations: List<NetworkWine>
+)
+
 data class NetworkWine(
     @Json(name = "wine_id") val id: Int,
     @Json(name = "name_kr") val nameKr: String?,
@@ -61,6 +66,14 @@ fun NetworkWine.asDatabaseModel(): RoomWine {
         price = price,
         food = food,
         url = url,
-        count = count
+        count = count,
+        recommend1 = recommend1,
+        recommend2 = recommend2,
+        recommend3 = recommend3
     )
+}
+
+fun NetworkWineRecommend.asDomainModel(): List<Wine> {
+    val recommendationList = recommendations.map { it.asDomainModel() }
+    return recommendationList
 }

@@ -5,14 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tastevin.MainActivity
 import com.example.tastevin.R
 import com.example.tastevin.data.ListData
 import com.example.tastevin.databinding.FragmentDetailBinding
 import com.example.tastevin.domain.Wine
+import com.example.tastevin.ui.search.result.SearchListViewModel
 
 class DetailFragment : Fragment() {
 
@@ -35,16 +39,6 @@ class DetailFragment : Fragment() {
             }
         }
         binding.recommendWineList.layoutManager = layoutManager
-
-//        binding.recommendWineList.adapter =
-//            RecommendWineListAdapter(object : WineItemClickListener {
-//                override fun onWineItemClicked(item: Wine) {
-//                    val bundle = Bundle().apply {
-//                        putParcelable("selectedWine", item)
-//                    }
-//                    findNavController().navigate(R.id.detail_fragment, bundle)
-//                }
-//            })
 
         return binding.root
     }
@@ -78,5 +72,27 @@ class DetailFragment : Fragment() {
 
         binding.priceText.text = item.price
         binding.foodListText.text = item.food
+
+
+        val recommendListAdapter = RecommendWineListAdapter(object : WineItemClickListener {
+                override fun onWineItemClicked(item: Wine) {
+                    val bundle = Bundle().apply {
+                        putParcelable("selectedWine", item)
+                    }
+                    findNavController().navigate(R.id.detail_fragment, bundle)
+                }
+            })
+        binding.recommendWineList.adapter = recommendListAdapter
+
+        val recommendWine = view.findViewById<RecyclerView>(R.id.recommend_wine_list)
+        recommendWine.adapter = recommendListAdapter
+
+        val viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+
+        viewModel.recommendWine(item.id)
+
+        viewModel.recommendWines.observe(viewLifecycleOwner, Observer { wines ->
+            recommendListAdapter.updateWines(wines)
+        })
     }
 }

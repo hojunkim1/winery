@@ -21,6 +21,9 @@ data class RoomWine(
     @ColumnInfo(name = "food") val food: String,
     @ColumnInfo(name = "pic_url") val url: String,
     @ColumnInfo(name = "count") val count: Int,
+    @ColumnInfo(name = "recommend1") val recommend1: Int? = null,
+    @ColumnInfo(name = "recommend2") val recommend2: Int? = null,
+    @ColumnInfo(name = "recommend3") val recommend3: Int? = null
 )
 
 fun RoomWine.asDomainModel(): Wine {
@@ -38,6 +41,9 @@ fun RoomWine.asDomainModel(): Wine {
         price = price,
         food = food,
         url = url,
-        count = count
+        count = count,
+        recommend1 = recommend1,
+        recommend2 = recommend2,
+        recommend3 = recommend3
     )
 }
