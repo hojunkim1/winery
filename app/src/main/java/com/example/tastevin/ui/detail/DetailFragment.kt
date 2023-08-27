@@ -36,15 +36,16 @@ class DetailFragment : Fragment() {
         }
         binding.recommendWineList.layoutManager = layoutManager
 
-//        binding.recommendWineList.adapter =
-//            RecommendWineListAdapter(object : WineItemClickListener {
-//                override fun onWineItemClicked(item: Wine) {
-//                    val bundle = Bundle().apply {
-//                        putParcelable("selectedWine", item)
-//                    }
-//                    findNavController().navigate(R.id.detail_fragment, bundle)
-//                }
-//            })
+        // TODO 추천 와인 서버 연결 필요
+        binding.recommendWineList.adapter =
+            RecommendWineListAdapter(object : WineItemClickListener {
+                override fun onWineItemClicked(item: Wine) {
+                    val bundle = Bundle().apply {
+                        putParcelable("selectedWine", item)
+                    }
+                    findNavController().navigate(R.id.detail_fragment, bundle)
+                }
+            })
 
         return binding.root
     }
@@ -55,7 +56,6 @@ class DetailFragment : Fragment() {
             act.supportFragmentManager.popBackStack()
         }
 
-//        val item = dataset[0]
         val item = arguments?.getParcelable<Wine>("selectedWine") ?: dataset[0]
 
         Glide.with(binding.wineImage)
@@ -71,6 +71,7 @@ class DetailFragment : Fragment() {
         binding.producerText.text = item.producer
         binding.nationText.text = item.nation
 
+        binding.typeText.text = item.type
         binding.sweetNum.text = item.sweet.toString()
         binding.acidityNum.text = item.acidity.toString()
         binding.bodyNum.text = item.body.toString()
