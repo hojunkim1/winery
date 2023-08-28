@@ -42,18 +42,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageView
         android:id="@+id/search_ocr_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:background="@color/purple"
-        android:clickable="true"
-        android:src="@drawable/camera"
+        android:src="@drawable/camera_floating"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
