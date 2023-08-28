@@ -34,6 +34,7 @@
         android:importantForAutofill="no"
         android:inputType="text"
         android:minHeight="48dp"
+        android:paddingStart="20dp"
         android:textColorHighlight="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="@id/search_toolbar"
         app:layout_constraintEnd_toEndOf="@+id/search_toolbar"
