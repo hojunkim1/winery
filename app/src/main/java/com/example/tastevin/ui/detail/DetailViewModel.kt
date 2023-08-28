@@ -30,9 +30,9 @@ class DetailViewModel : ViewModel() {
 //                Timber.tag("JSON").d(networkWines.toString())
 
                 val networkWines: List<NetworkWine> = listOf(
-                    WineApi.retrofitService.getWineOneById(item.recommend1),
-                    WineApi.retrofitService.getWineOneById(item.recommend2),
-                    WineApi.retrofitService.getWineOneById(item.recommend3)
+                    WineApi.retrofitService.getWineById(item.recommend1),
+                    WineApi.retrofitService.getWineById(item.recommend2),
+                    WineApi.retrofitService.getWineById(item.recommend3)
                 )
                 Timber.tag("JSON").d(networkWines.toString())
                 val wines = networkWines.map { it.asDomainModel() }

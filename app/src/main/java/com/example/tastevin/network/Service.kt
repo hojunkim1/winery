@@ -25,18 +25,18 @@ private val retrofit = Retrofit.Builder()
 interface Service {
 
     /**
-     * id 를 전달하면 해당 와인 데이터가 온다.
-     * 사용 예 : .getWineById(1)
+     * id 를 전달하면 해당 와인과 추천 와인 데이터가 온다.
+     * 사용 예 : .getRecommendationById(1)
      */
     @GET("/wines/{wine_id}")
-    fun getWineById(@Path("wine_id") id: Int): NetworkWineRecommend
+    fun getRecommendationById(@Path("wine_id") id: Int): NetworkWineRecommendation
 
     /**
      * id 를 전달하면 해당 와인 데이터가 온다.
      * 사용 예 : .getWineById(1)
      */
     @GET("/wineeeee/{wine_id}")
-    suspend fun getWineOneById(
+    suspend fun getWineById(
         @Path("wine_id") id: Int
     ): NetworkWine
 
