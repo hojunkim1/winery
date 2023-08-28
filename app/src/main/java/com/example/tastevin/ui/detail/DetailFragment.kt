@@ -64,7 +64,8 @@ class DetailFragment : Fragment() {
         binding.producerText.text = item.producer
         binding.nationText.text = item.nation
 
-        binding.typeText.text = item.type
+        // TODO typeText 레이아웃 추가
+//        binding.typeText.text = item.type
         var sweetNum = item.sweet.toString()
         val sweetRating = item.sweet.toFloat() // Convert the value to float for the rating
         binding.ratingSweet.rating = sweetRating
