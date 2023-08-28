@@ -17,6 +17,10 @@ class ColumnFragment : Fragment() {
 //        }
 //    }
 
+    companion object {
+        private const val READ_EXTERNAL_STORAGE_PERMISSION_CODE = 1
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,5 +40,7 @@ class ColumnFragment : Fragment() {
             act.supportFragmentManager.popBackStack()
         }
     }
+
+
 }
 
