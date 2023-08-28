@@ -1,23 +1,18 @@
 package com.example.tastevin.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.example.tastevin.MainActivity
 import com.example.tastevin.R
 import com.example.tastevin.databinding.FragmentHomeBinding
 import com.example.tastevin.domain.Wine
@@ -68,7 +63,7 @@ class HomeFragment : Fragment() {
         viewPager = view.findViewById(R.id.home_post_pager)
         viewPager.adapter = PostAdapter(this)
 
-        val wineAdapter = HomeAdapter(object: WineItemClickListener {
+        val wineAdapter = HomeAdapter(object : WineItemClickListener {
             override fun onWineItemClicked(item: Wine) {
                 val bundle = Bundle().apply {
                     putParcelable("selectedWine", item)

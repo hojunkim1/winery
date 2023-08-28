@@ -5,8 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tastevin.MainActivity
 import com.example.tastevin.R
@@ -36,16 +39,6 @@ class DetailFragment : Fragment() {
         }
         binding.recommendWineList.layoutManager = layoutManager
 
-        binding.recommendWineList.adapter =
-            RecommendWineListAdapter(object : WineItemClickListener {
-                override fun onWineItemClicked(item: Wine) {
-                    val bundle = Bundle().apply {
-                        putParcelable("selectedWine", item)
-                    }
-                    findNavController().navigate(R.id.detail_fragment, bundle)
-                }
-            })
-
         return binding.root
     }
 
@@ -57,6 +50,7 @@ class DetailFragment : Fragment() {
 
 //        val item = dataset[0]
         val item = arguments?.getParcelable<Wine>("selectedWine") ?: dataset[0]
+
         Glide.with(binding.wineImage)
             .load(item.url)
             .into(binding.wineImage)
@@ -70,6 +64,8 @@ class DetailFragment : Fragment() {
         binding.producerText.text = item.producer
         binding.nationText.text = item.nation
 
+        // TODO typeText 레이아웃 추가
+//        binding.typeText.text = item.type
         var sweetNum = item.sweet.toString()
         val sweetRating = item.sweet.toFloat() // Convert the value to float for the rating
         binding.ratingSweet.rating = sweetRating
@@ -85,5 +81,26 @@ class DetailFragment : Fragment() {
 
         binding.priceText.text = item.price
         binding.foodListText.text = item.food
+
+
+        val recommendListAdapter = RecommendWineListAdapter(object : WineItemClickListener {
+            override fun onWineItemClicked(item: Wine) {
+                val bundle = Bundle().apply {
+                    putParcelable("selectedWine", item)
+                }
+                findNavController().navigate(R.id.detail_fragment, bundle)
+            }
+        })
+        binding.recommendWineList.adapter = recommendListAdapter
+
+        val recommendWine = view.findViewById<RecyclerView>(R.id.recommend_wine_list)
+        recommendWine.adapter = recommendListAdapter
+
+        val viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
+
+        viewModel.recommendWine(item)
+        viewModel.recommendWines.observe(viewLifecycleOwner, Observer { wines ->
+            recommendListAdapter.updateWines(wines)
+        })
     }
 }

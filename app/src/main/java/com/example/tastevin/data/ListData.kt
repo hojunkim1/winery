@@ -18,6 +18,9 @@ object ListData {
             "49000원",
             "치즈",
             "https://images.unsplash.com/photo-1610631787813-9eeb1a2386cc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80",
+            0,
+            0,
+            0,
             0
         ),
         Wine(
@@ -34,6 +37,9 @@ object ListData {
             "50000원",
             "감바스, 스테이크",
             "https://images.unsplash.com/photo-1592845148519-b0d41df97ac2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+            0,
+            0,
+            0,
             0
         ),
         Wine(
@@ -50,6 +56,9 @@ object ListData {
             "45000원",
             "참치, 카나페, 생과일",
             "https://images.unsplash.com/photo-1614208406223-5b78888e8b4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=980&q=80",
+            0,
+            0,
+            0,
             0
         ),
         Wine(
@@ -66,6 +75,9 @@ object ListData {
             "29000원",
             "견과류, 나초",
             "https://images.unsplash.com/photo-1553703189-2f8ce8a11bcc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=986&q=80",
+            0,
+            0,
+            0,
             0
         ),
         Wine(
@@ -82,6 +94,9 @@ object ListData {
             "53000원",
             "스테이크",
             "https://images.unsplash.com/photo-1575136087248-7f2ea5f2fe36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+            0,
+            0,
+            0,
             0
         ),
         Wine(
@@ -98,6 +113,9 @@ object ListData {
             "62000원",
             "홍합 스튜",
             "https://images.unsplash.com/photo-1588982766898-4a826e5ef631?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+            0,
+            0,
+            0,
             0
         ),
         Wine(
@@ -114,6 +132,9 @@ object ListData {
             "32000원",
             "카나페",
             "https://images.unsplash.com/photo-1584493306744-5fe6e59bc77b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1227&q=80",
+            0,
+            0,
+            0,
             0
         ),
         Wine(
@@ -130,6 +151,9 @@ object ListData {
             "23000원",
             "나초, 견과류",
             "https://images.unsplash.com/photo-1620225037158-72f3127cc687?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+            0,
+            0,
+            0,
             0
         ),
         Wine(
@@ -146,6 +170,9 @@ object ListData {
             "32000원",
             "스테이크, 감바스, 스튜",
             "https://images.unsplash.com/photo-1606657765076-44154cfec14d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1077&q=80",
+            0,
+            0,
+            0,
             0
         ),
         Wine(
@@ -162,6 +189,9 @@ object ListData {
             "47000원",
             "생과일",
             "https://images.unsplash.com/photo-1592771583091-acd7dd17e278?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+            0,
+            0,
+            0,
             0
         )
     )

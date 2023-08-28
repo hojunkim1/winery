@@ -1,28 +1,45 @@
 package com.example.tastevin.ui.detail
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tastevin.domain.Wine
 import com.example.tastevin.network.NetworkWine
 import com.example.tastevin.network.WineApi
+import com.example.tastevin.network.asDomainModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class DetailViewModel : ViewModel() {
-    private val _recommendWines = MutableLiveData<List<NetworkWine>>()
-    val recommendWines: LiveData<List<NetworkWine>> = _recommendWines
+    val wineDetail = MutableLiveData<Wine>()
+    val recommendWines = MutableLiveData<List<Wine>>()
 
-    // 추천 와인들의 ID를 받아와서 해당 와인들의 정보를 가져오는 함수
-    fun fetchRecommendWines(recommendIds: List<Int>) {
+    fun recommendWine(item: Wine) {
         viewModelScope.launch {
+            Timber.tag("JSON").d("Network started")
             try {
-                val networkWines = recommendIds.map { id ->
-                    WineApi.retrofitService.getWineById(id)
-                }
-                _recommendWines.postValue(networkWines)
+//                val networkWines =  WineApi.retrofitService.getWineById(id)
+//                wineDetail.postValue(networkWines.wine.asDomainModel())
+//                val wines = networkWines.recommendations.map { it.asDomainModel() }
+//                recommendWines.postValue(wines)
+//                Timber.tag("JSON").d(networkWines.toString())
+//
+//                val networkWines = WineApi.retrofitService.getWineById(id) // 오류
+//                val wines = networkWines.asDomainModel()
+//                recommendWines.postValue(wines)
+//                Timber.tag("JSON").d(networkWines.toString())
+
+                val networkWines: List<NetworkWine> = listOf(
+                    WineApi.retrofitService.getWineOneById(item.recommend1),
+                    WineApi.retrofitService.getWineOneById(item.recommend2),
+                    WineApi.retrofitService.getWineOneById(item.recommend3)
+                )
+                Timber.tag("JSON").d(networkWines.toString())
+                val wines = networkWines.map { it.asDomainModel() }
+                recommendWines.postValue(wines)
+                Timber.tag("JSON").d(networkWines.toString())
             } catch (e: Exception) {
-                Timber.e(e, "Error fetching recommend wines")
+                Timber.tag("JSON").e(e.toString())
             }
         }
     }

@@ -38,5 +38,7 @@ class BookmarkFragment : Fragment() {
                 else -> false
             }
         }
+
+        // TODO 북마크 리스트 연결 구현 필요
     }
 }

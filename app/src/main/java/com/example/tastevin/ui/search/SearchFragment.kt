@@ -7,9 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.tastevin.MainActivity
 import com.example.tastevin.R
@@ -54,12 +51,13 @@ class SearchFragment : Fragment() {
                     view.findNavController().navigate(action)
                     true
                 }
+
                 else -> false
             }
         }
 
         binding.searchTxt.setOnKeyListener { _, keyCode, event ->
-            if(event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
                 val searchText = binding.searchTxt.text.toString()
 //                viewModel.searchWine(searchText)
                 val action =

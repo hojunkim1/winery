@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tastevin.R
-import com.example.tastevin.data.ListData
 import com.example.tastevin.domain.Wine
 
 interface WineItemClickListener {
@@ -17,13 +16,16 @@ interface WineItemClickListener {
 
 class RecommendWineListAdapter(private val clickListener: WineItemClickListener) :
     RecyclerView.Adapter<RecommendWineListAdapter.RecommendWineListViewHolder>() {
-    private val dataset = ListData.newBoard
-    //private  var dataset: List<Wine> = listOf()
+    private var dataset: List<Wine> = listOf()
+
+    fun updateWines(newWines: List<Wine>) {
+        dataset = newWines
+        notifyDataSetChanged()
+    }
+
     /**
      * Initialize view elements
      */
-
-
     class RecommendWineListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val wineImage: ImageView = view.findViewById(R.id.wine_image)
         val wineName: TextView = view.findViewById(R.id.wine_name)
@@ -44,21 +46,23 @@ class RecommendWineListAdapter(private val clickListener: WineItemClickListener)
      * Replace the contents of a view
      */
     override fun onBindViewHolder(holder: RecommendWineListViewHolder, position: Int) {
-        val item = dataset[position]
+        if (position < dataset.size) {
+            val item = dataset[position]
 
-        // image URL로 받아오기
-        Glide.with(holder.itemView.context)
-            .load(item.url)
-            .into(holder.wineImage)
-        if (item.nameEn != null) {
-            holder.wineName.text = item.nameEn
-        } else {
-            holder.wineName.text = item.nameKr
-        }
-        holder.wineProducer.text = item.producer
+            // image URL로 받아오기
+            Glide.with(holder.itemView.context)
+                .load(item.url)
+                .into(holder.wineImage)
+            if (item.nameEn != null) {
+                holder.wineName.text = item.nameEn
+            } else {
+                holder.wineName.text = item.nameKr
+            }
+            holder.wineProducer.text = item.producer
 
-        holder.itemView.setOnClickListener {
-            clickListener.onWineItemClicked(item)
+            holder.itemView.setOnClickListener {
+                clickListener.onWineItemClicked(item)
+            }
         }
     }
 

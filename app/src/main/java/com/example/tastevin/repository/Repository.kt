@@ -69,7 +69,7 @@ class Repository(private val database: AppDatabase) {
      */
     private fun fetchWine(id: Int) {
         try {
-            val newWine = WineApi.retrofitService.getWineById(id).asDatabaseModel()
+            val newWine = WineApi.retrofitService.getWineById(id).wine.asDatabaseModel()
             database.wineDao().insertWine(newWine)
         } catch (e: Exception) {
             Timber.tag(TAG).e(e.toString())
