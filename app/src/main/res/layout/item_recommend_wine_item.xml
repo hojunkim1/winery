@@ -51,13 +51,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:fontFamily="@font/nanumsquare"
                 android:maxLines="1"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:fontFamily="@font/nanumsquare"
                 tools:text="Name" />
 
             <TextView
@@ -66,13 +66,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:ellipsize="end"
+                android:fontFamily="@font/nanumsquare"
                 android:maxLines="1"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/wine_name"
-                android:fontFamily="@font/nanumsquare"
                 tools:ignore="TextContrastCheck"
                 tools:text="producer" />
         </androidx.constraintlayout.widget.ConstraintLayout>

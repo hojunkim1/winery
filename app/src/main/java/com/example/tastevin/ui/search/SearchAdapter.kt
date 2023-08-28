@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tastevin.R
 import com.example.tastevin.network.NetworkWine
 
-class SearchAdapter(private val listener: OnItemClickListener) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class SearchAdapter(private val listener: OnItemClickListener) :
+    RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     private val items: MutableList<NetworkWine> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_search_list_item, parent, false)
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_search_list_item, parent, false)
         return ViewHolder(itemView)
     }
 
