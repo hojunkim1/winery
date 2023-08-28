@@ -39,17 +39,6 @@ class DetailFragment : Fragment() {
         }
         binding.recommendWineList.layoutManager = layoutManager
 
-//        // TODO 추천 와인 서버 연결 필요
-//        binding.recommendWineList.adapter =
-//            RecommendWineListAdapter(object : WineItemClickListener {
-//                override fun onWineItemClicked(item: Wine) {
-//                    val bundle = Bundle().apply {
-//                        putParcelable("selectedWine", item)
-//                    }
-//                    findNavController().navigate(R.id.detail_fragment, bundle)
-//                }
-//            })
-
         return binding.root
     }
 
@@ -59,6 +48,7 @@ class DetailFragment : Fragment() {
             act.supportFragmentManager.popBackStack()
         }
 
+//        val item = dataset[0]
         val item = arguments?.getParcelable<Wine>("selectedWine") ?: dataset[0]
 
         Glide.with(binding.wineImage)
@@ -75,10 +65,18 @@ class DetailFragment : Fragment() {
         binding.nationText.text = item.nation
 
         binding.typeText.text = item.type
-        binding.sweetNum.text = item.sweet.toString()
-        binding.acidityNum.text = item.acidity.toString()
-        binding.bodyNum.text = item.body.toString()
-        binding.tanninNum.text = item.tannin.toString()
+        var sweetNum = item.sweet.toString()
+        val sweetRating = item.sweet.toFloat() // Convert the value to float for the rating
+        binding.ratingSweet.rating = sweetRating
+
+        var acidityNum = item.acidity.toString()
+        binding.ratingAcidity.rating = item.acidity.toFloat()
+
+        var bodyNum = item.body.toString()
+        binding.ratingBody.rating = item.body.toFloat()
+
+        var tanninNum = item.body.toString()
+        binding.ratingTannin.rating = item.tannin.toFloat()
 
         binding.priceText.text = item.price
         binding.foodListText.text = item.food

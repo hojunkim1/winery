@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardBackgroundColor="@color/gray"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="20dp"
-    app:cardElevation="0dp"
-    app:contentPadding="10dp">
+    app:cardElevation="3dp"
+    app:contentPadding="10dp"
+    app:strokeColor="@color/gold"
+    app:strokeWidth="3dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -55,6 +57,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/nanumsquare"
                 tools:text="Name" />
 
             <TextView
@@ -69,6 +72,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/wine_name"
+                android:fontFamily="@font/nanumsquare"
                 tools:ignore="TextContrastCheck"
                 tools:text="producer" />
         </androidx.constraintlayout.widget.ConstraintLayout>

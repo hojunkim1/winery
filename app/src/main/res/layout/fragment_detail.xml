@@ -6,233 +6,309 @@
     android:layout_height="match_parent"
     tools:context=".ui.detail.DetailFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profile_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="400dp"
+        android:background="@color/purple"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/chevron_left" />
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/chevron_left" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:strokeColor="@color/gold"
+            app:strokeWidth="5dp">
+
+            <ImageView
+                android:id="@+id/wine_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/wine_image"
+                tools:srcCompat="@drawable/wine_image" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/en_wine_name_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/nanumsquare"
+            android:text="Wine Name"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/bookmark_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/materialCardView" />
+
+        <TextView
+            android:id="@+id/ko_wine_name_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/nanumsquare"
+            android:text="와인이름"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/bookmark_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/en_wine_name_text" />
+
+        <ImageButton
+            android:id="@+id/bookmark_button"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="28dp"
+            android:background="@color/purple"
+            android:src="@drawable/bookmark_gold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/materialCardView"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toBottomOf="@id/profile_view"
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/materialCardView"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
-                app:cardCornerRadius="100dp"
-                app:cardElevation="4dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/wine_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/white"
-                    tools:ignore="ContentDescription"
-                    tools:src="@drawable/wine_image"
-                    tools:srcCompat="@drawable/wine_image" />
-            </com.google.android.material.card.MaterialCardView>
 
             <TextView
-                android:id="@+id/en_wine_name_text"
-                android:layout_width="0dp"
+                android:id="@+id/textView2"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Wine Name"
-                android:textColor="@color/black"
-                android:textSize="24sp"
+                android:layout_marginTop="26dp"
+                android:text="생산자"
+                android:textColor="@color/light_brown"
+                android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/bookmark_button"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/materialCardView" />
-
-            <TextView
-                android:id="@+id/ko_wine_name_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="16dp"
-                android:text="와인이름"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toStartOf="@+id/bookmark_button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/en_wine_name_text" />
-
-            <ImageButton
-                android:id="@+id/bookmark_button"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:background="@color/white"
-                android:src="@drawable/ic_bookmark_unselected"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/materialCardView"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/producer_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/nanumsquare"
                 android:text="producer"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/textView2"
+                app:layout_constraintStart_toEndOf="@+id/textView2" />
+
+            <TextView
+                android:id="@+id/nation"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:text="생산지"
+                android:textColor="@color/light_brown"
+                android:textSize="15sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ko_wine_name_text" />
+                app:layout_constraintTop_toBottomOf="@+id/producer_text" />
 
             <TextView
                 android:id="@+id/nation_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="6dp"
                 android:layout_marginEnd="32dp"
-                android:text="nation"
+                android:fontFamily="@font/nanumsquare"
+                android:text="한국(Korea) > 서울(Seoul)"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/producer_text" />
-
-            <TextView
-                android:id="@+id/type_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:text="type"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nation_text" />
+                app:layout_constraintStart_toEndOf="@+id/nation"
+                app:layout_constraintTop_toTopOf="@+id/nation" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/flavor_texts"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/type_text">
+                app:layout_constraintTop_toBottomOf="@+id/price_text">
 
-                <TextView
-                    android:id="@+id/sweet_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="sweet: "
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/sweet_num"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="5"
-                    app:layout_constraintEnd_toEndOf="parent"
+                <RatingBar
+                    android:id="@+id/rating_sweet"
+                    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                    android:layout_width="80dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
+                    android:numStars="5"
+                    android:progressTint="@color/gold"
+                    android:rating="0"
                     app:layout_constraintStart_toEndOf="@id/sweet_text"
                     app:layout_constraintTop_toTopOf="@id/sweet_text" />
 
                 <TextView
-                    android:id="@+id/acidity_text"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/sweet_text"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="acidity: "
+                    android:background="@drawable/border_detail"
+                    android:fontFamily="@font/nanumsquare"
+                    android:text="sweet"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sweet_text" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/acidity_num"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="5"
-                    app:layout_constraintEnd_toEndOf="parent"
+                <RatingBar
+                    android:id="@+id/rating_acidity"
+                    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                    android:layout_width="80dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
+                    android:numStars="5"
+                    android:progressTint="@color/gold"
+                    android:rating="0"
                     app:layout_constraintStart_toEndOf="@id/acidity_text"
                     app:layout_constraintTop_toTopOf="@id/acidity_text" />
 
                 <TextView
-                    android:id="@+id/body_text"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/acidity_text"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="body: "
+                    android:background="@drawable/border_detail"
+                    android:fontFamily="@font/nanumsquare"
+                    android:text="acidity"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/acidity_text" />
+                    app:layout_constraintTop_toBottomOf="@+id/sweet_text" />
 
-                <TextView
-                    android:id="@+id/body_num"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="5"
-                    app:layout_constraintEnd_toEndOf="parent"
+
+                <RatingBar
+                    android:id="@+id/rating_body"
+                    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                    android:layout_width="78dp"
+                    android:layout_height="19dp"
+                    android:layout_marginStart="10dp"
+                    android:numStars="5"
+                    android:progressTint="@color/gold"
+                    android:rating="0"
                     app:layout_constraintStart_toEndOf="@id/body_text"
                     app:layout_constraintTop_toTopOf="@id/body_text" />
 
+
                 <TextView
-                    android:id="@+id/tannin_text"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/body_text"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="tannin: "
+                    android:background="@drawable/border_detail"
+                    android:fontFamily="@font/nanumsquare"
+                    android:text="body"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/acidity_text" />
+
+
+                <RatingBar
+                    android:id="@+id/rating_tannin"
+                    style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                    android:layout_width="80dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="10dp"
+                    android:numStars="5"
+                    android:progressTint="@color/gold"
+                    android:rating="0"
+                    app:layout_constraintStart_toEndOf="@id/tannin_text"
+                    app:layout_constraintTop_toTopOf="@id/tannin_text" />
+
+                <TextView
+                    android:id="@+id/tannin_text"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/border_detail"
+                    android:fontFamily="@font/nanumsquare"
+                    android:text="tannin"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/body_text" />
 
-                <TextView
-                    android:id="@+id/tannin_num"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="5"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/tannin_text"
-                    app:layout_constraintTop_toTopOf="@id/tannin_text" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/price_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginStart="10dp"
                 android:text="price"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/flavor_texts" />
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/price"
+                app:layout_constraintStart_toEndOf="@+id/price" />
 
             <TextView
                 android:id="@+id/food_text"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:text="어울리는 안주: "
+                android:layout_marginEnd="4dp"
+                android:text="추천 안주 "
+                android:textColor="@color/light_brown"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/food_list_text"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/price_text" />
+                app:layout_constraintTop_toBottomOf="@+id/flavor_texts" />
 
             <TextView
                 android:id="@+id/food_list_text"
@@ -240,23 +316,53 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="32dp"
-                android:text="foods"
+                android:text="TextView"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/food_text"
-                app:layout_constraintTop_toTopOf="@id/food_text" />
+                app:layout_constraintTop_toTopOf="@+id/food_text" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recommend_wine_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="32dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/food_text"
+                app:layout_constraintTop_toBottomOf="@+id/ai_recommend"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_recommend_wine_item" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:text="가격(용량)"
+                android:textColor="@color/light_brown"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nation_text" />
+
+            <TextView
+                android:id="@+id/ai_recommend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:drawableLeft="@drawable/shining"
+                android:text=" AI 의 추천 와인"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/food_list_text" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
