@@ -1,17 +1,11 @@
 package com.example.tastevin.ui.search.result
 
-import android.content.Context
 import android.os.Bundle
-import android.text.Editable
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -23,9 +17,6 @@ import com.example.tastevin.R
 import com.example.tastevin.databinding.FragmentSearchListBinding
 import com.example.tastevin.domain.Wine
 import com.example.tastevin.ui.detail.WineItemClickListener
-import com.example.tastevin.ui.home.HomeViewModel
-import com.example.tastevin.ui.search.SearchFragmentDirections
-import com.example.tastevin.ui.search.SearchViewModel
 
 class SearchListFragment : Fragment() {
 
@@ -57,31 +48,37 @@ class SearchListFragment : Fragment() {
                 R.id.search_menu_search -> {
                     val searchText: String = binding.searchTxt.text.toString()
                     val action =
-                        SearchListFragmentDirections.actionNavigationSearchListToSearchListFragment(searchText)
+                        SearchListFragmentDirections.actionNavigationSearchListToSearchListFragment(
+                            searchText
+                        )
 //                    findNavController().popBackStack()
                     view.findNavController().navigate(action)
                     true
                 }
+
                 else -> false
             }
         }
 
         binding.searchTxt.setOnKeyListener { _, keyCode, event ->
-            if(event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 val searchText: String = binding.searchTxt.text.toString()
-                val action = SearchListFragmentDirections.actionNavigationSearchListToSearchListFragment(searchText)
+                val action =
+                    SearchListFragmentDirections.actionNavigationSearchListToSearchListFragment(
+                        searchText
+                    )
                 view.findNavController().navigate(action)
             }
             true
         }
 
         binding.searchTxt.setOnFocusChangeListener { _, hasFocus ->
-            if(hasFocus) {
+            if (hasFocus) {
                 binding.searchTxt.hint = ""
             }
         }
 
-        val searchListAdapter = SearchListAdapter(object: WineItemClickListener {
+        val searchListAdapter = SearchListAdapter(object : WineItemClickListener {
             override fun onWineItemClicked(item: Wine) {
                 val bundle = Bundle().apply {
                     putParcelable("selectedWine", item)

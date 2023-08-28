@@ -10,7 +10,7 @@ import com.example.tastevin.network.asDomainModel
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class SearchListViewModel: ViewModel() {
+class SearchListViewModel : ViewModel() {
     val searchWines = MutableLiveData<List<Wine>>()
 
     fun searchWine(searchText: String, isOcr: String) {

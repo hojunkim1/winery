@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.tastevin.domain.Wine
+import com.example.tastevin.network.NetworkWine
 import com.example.tastevin.network.WineApi
 import com.example.tastevin.network.asDomainModel
 import kotlinx.coroutines.launch
@@ -13,7 +14,7 @@ class DetailViewModel : ViewModel() {
     val wineDetail = MutableLiveData<Wine>()
     val recommendWines = MutableLiveData<List<Wine>>()
 
-    fun recommendWine(id: Int) {
+    fun recommendWine(item: Wine) {
         viewModelScope.launch {
             Timber.tag("JSON").d("Network started")
             try {
@@ -22,8 +23,19 @@ class DetailViewModel : ViewModel() {
 //                val wines = networkWines.recommendations.map { it.asDomainModel() }
 //                recommendWines.postValue(wines)
 //                Timber.tag("JSON").d(networkWines.toString())
-                val networkWines = WineApi.retrofitService.getWineById(id) // 오류
-                val wines = networkWines.asDomainModel()
+//
+//                val networkWines = WineApi.retrofitService.getWineById(id) // 오류
+//                val wines = networkWines.asDomainModel()
+//                recommendWines.postValue(wines)
+//                Timber.tag("JSON").d(networkWines.toString())
+
+                val networkWines: List<NetworkWine> = listOf(
+                    WineApi.retrofitService.getWineOneById(item.recommend1),
+                    WineApi.retrofitService.getWineOneById(item.recommend2),
+                    WineApi.retrofitService.getWineOneById(item.recommend3)
+                )
+                Timber.tag("JSON").d(networkWines.toString())
+                val wines = networkWines.map { it.asDomainModel() }
                 recommendWines.postValue(wines)
                 Timber.tag("JSON").d(networkWines.toString())
             } catch (e: Exception) {

@@ -16,7 +16,6 @@ import com.example.tastevin.R
 import com.example.tastevin.data.ListData
 import com.example.tastevin.databinding.FragmentDetailBinding
 import com.example.tastevin.domain.Wine
-import com.example.tastevin.ui.search.result.SearchListViewModel
 
 class DetailFragment : Fragment() {
 
@@ -40,16 +39,16 @@ class DetailFragment : Fragment() {
         }
         binding.recommendWineList.layoutManager = layoutManager
 
-        // TODO 추천 와인 서버 연결 필요
-        binding.recommendWineList.adapter =
-            RecommendWineListAdapter(object : WineItemClickListener {
-                override fun onWineItemClicked(item: Wine) {
-                    val bundle = Bundle().apply {
-                        putParcelable("selectedWine", item)
-                    }
-                    findNavController().navigate(R.id.detail_fragment, bundle)
-                }
-            })
+//        // TODO 추천 와인 서버 연결 필요
+//        binding.recommendWineList.adapter =
+//            RecommendWineListAdapter(object : WineItemClickListener {
+//                override fun onWineItemClicked(item: Wine) {
+//                    val bundle = Bundle().apply {
+//                        putParcelable("selectedWine", item)
+//                    }
+//                    findNavController().navigate(R.id.detail_fragment, bundle)
+//                }
+//            })
 
         return binding.root
     }
@@ -86,22 +85,21 @@ class DetailFragment : Fragment() {
 
 
         val recommendListAdapter = RecommendWineListAdapter(object : WineItemClickListener {
-                override fun onWineItemClicked(item: Wine) {
-                    val bundle = Bundle().apply {
-                        putParcelable("selectedWine", item)
-                    }
-                    findNavController().navigate(R.id.detail_fragment, bundle)
+            override fun onWineItemClicked(item: Wine) {
+                val bundle = Bundle().apply {
+                    putParcelable("selectedWine", item)
                 }
-            })
+                findNavController().navigate(R.id.detail_fragment, bundle)
+            }
+        })
         binding.recommendWineList.adapter = recommendListAdapter
 
         val recommendWine = view.findViewById<RecyclerView>(R.id.recommend_wine_list)
         recommendWine.adapter = recommendListAdapter
 
-        val viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+        val viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
 
-        viewModel.recommendWine(item.id)
-
+        viewModel.recommendWine(item)
         viewModel.recommendWines.observe(viewLifecycleOwner, Observer { wines ->
             recommendListAdapter.updateWines(wines)
         })

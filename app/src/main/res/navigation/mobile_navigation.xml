@@ -70,10 +70,10 @@
             android:id="@+id/action_navigation_selectImage_to_cameraFragment"
             app:destination="@id/camera_fragment"
             app:popUpTo="@id/search_fragment" />
-<!--        <action-->
-<!--            android:id="@+id/action_navigation_selectImage_to_resultOcrFragment"-->
-<!--            app:destination="@id/result_ocr_fragment"-->
-<!--            app:popUpTo="@id/search_fragment" />-->
+        <!--        <action-->
+        <!--            android:id="@+id/action_navigation_selectImage_to_resultOcrFragment"-->
+        <!--            app:destination="@id/result_ocr_fragment"-->
+        <!--            app:popUpTo="@id/search_fragment" />-->
         <action
             android:id="@+id/action_navigation_selectImage_to_searchListFragment"
             app:destination="@id/search_list_fragment"

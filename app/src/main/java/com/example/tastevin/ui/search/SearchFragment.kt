@@ -51,12 +51,13 @@ class SearchFragment : Fragment() {
                     view.findNavController().navigate(action)
                     true
                 }
+
                 else -> false
             }
         }
 
         binding.searchTxt.setOnKeyListener { _, keyCode, event ->
-            if(event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
                 val searchText = binding.searchTxt.text.toString()
 //                viewModel.searchWine(searchText)
                 val action =

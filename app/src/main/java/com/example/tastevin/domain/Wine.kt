@@ -19,9 +19,9 @@ data class Wine(
     val food: String,
     val url: String,
     val count: Int,
-    val recommend1: Int? = null,
-    val recommend2: Int? = null,
-    val recommend3: Int? = null
+    val recommend1: Int,
+    val recommend2: Int,
+    val recommend3: Int
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
@@ -38,9 +38,9 @@ data class Wine(
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readInt(),
-        parcel.readValue(Int::class.java.classLoader) as? Int,
-        parcel.readValue(Int::class.java.classLoader) as? Int,
-        parcel.readValue(Int::class.java.classLoader) as? Int
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt()
     ) {
     }
 
@@ -78,6 +78,9 @@ fun Wine.asDatabaseModel(): RoomWine {
         price = price,
         food = food,
         url = url,
-        count = count
+        count = count,
+        recommend1 = recommend1,
+        recommend2 = recommend2,
+        recommend3 = recommend3
     )
 }
