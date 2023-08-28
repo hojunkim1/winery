@@ -66,7 +66,7 @@ class SearchListFragment : Fragment() {
             }
         }
 
-        binding.searchTxt.setOnKeyListener { v, keyCode, event ->
+        binding.searchTxt.setOnKeyListener { _, keyCode, event ->
             if(event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 val searchText: String = binding.searchTxt.text.toString()
                 val action = SearchListFragmentDirections.actionNavigationSearchListToSearchListFragment(searchText)

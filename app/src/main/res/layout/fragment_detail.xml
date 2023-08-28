@@ -112,21 +112,33 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
-                android:text="한국(Korea) > 서울(Seoul)"
+                android:text="nation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/producer_text" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/flavor_texts"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+            <TextView
+                android:id="@+id/type_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
+                android:text="type"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nation_text">
+                app:layout_constraintTop_toBottomOf="@id/nation_text" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/flavor_texts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/type_text">
 
                 <TextView
                     android:id="@+id/sweet_text"
@@ -149,6 +161,7 @@
                     android:id="@+id/acidity_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:text="acidity: "
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sweet_text" />
@@ -166,6 +179,7 @@
                     android:id="@+id/body_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:text="body: "
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/acidity_text" />
@@ -183,6 +197,7 @@
                     android:id="@+id/tannin_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:text="tannin: "
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/body_text" />
@@ -225,7 +240,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="32dp"
-                android:text="TextView"
+                android:text="foods"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/food_text"
                 app:layout_constraintTop_toTopOf="@id/food_text" />

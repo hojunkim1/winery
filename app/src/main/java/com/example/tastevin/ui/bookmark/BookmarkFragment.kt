@@ -6,9 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.example.tastevin.R
 import com.example.tastevin.databinding.FragmentBookmarkBinding
+import com.example.tastevin.domain.Wine
+import com.example.tastevin.ui.detail.WineItemClickListener
+import com.example.tastevin.ui.search.result.SearchListAdapter
+import com.example.tastevin.ui.search.result.SearchListViewModel
 
 class BookmarkFragment : Fragment() {
 
@@ -37,5 +44,7 @@ class BookmarkFragment : Fragment() {
                 else -> false
             }
         }
+
+        // TODO 북마크 리스트 연결 구현 필요
     }
 }
