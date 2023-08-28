@@ -5,4 +5,7 @@
     <color name="gray">#D9D9D9</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="silver">#c0c0c0</color>
+    <color name="gold">#8c6e20</color>
+    <color name="purple">#5e3b59</color>
 </resources>

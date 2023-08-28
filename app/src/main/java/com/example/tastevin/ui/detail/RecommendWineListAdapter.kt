@@ -18,10 +18,12 @@ interface WineItemClickListener {
 class RecommendWineListAdapter(private val clickListener: WineItemClickListener) :
     RecyclerView.Adapter<RecommendWineListAdapter.RecommendWineListViewHolder>() {
     private val dataset = ListData.newBoard
-
+    //private  var dataset: List<Wine> = listOf()
     /**
      * Initialize view elements
      */
+
+
     class RecommendWineListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val wineImage: ImageView = view.findViewById(R.id.wine_image)
         val wineName: TextView = view.findViewById(R.id.wine_name)

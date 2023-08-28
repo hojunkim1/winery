@@ -43,7 +43,7 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = layoutManager
 
         //binding = FragmentHomeBinding.inflate(inflater)
-        binding.homeToolbar.title = "tastevin"
+        //binding.homeToolbar.title = "tastevin"
 
         binding.homeToolbar.inflateMenu(R.menu.home_menu)
         return binding.root
