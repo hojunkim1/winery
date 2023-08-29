@@ -64,5 +64,103 @@
         app:layout_constraintTop_toTopOf="@id/search_txt"
         tools:ignore="contentDescription"/>
 
+    <TextView
+        android:id="@+id/recommend_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:drawableLeft="@drawable/light_bulb"
+        android:text=" 추천 키워드"
+        android:textColor="@color/light_brown"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_toolbar" />
+
+    <TextView
+        android:id="@+id/keyword1"
+        android:layout_width="120dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/border_search"
+        android:fontFamily="@font/nanumsquare"
+        android:padding="6dp"
+        android:text="샤또 몽페라"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recommend_txt" />
+
+    <TextView
+        android:id="@+id/keyword2"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/border_search"
+        android:fontFamily="@font/nanumsquare"
+        android:padding="6dp"
+        android:text="모스카토 다스티"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/keyword1"
+        app:layout_constraintTop_toBottomOf="@+id/recommend_txt" />
+
+    <TextView
+        android:id="@+id/keyword3"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/border_search"
+        android:fontFamily="@font/nanumsquare"
+        android:padding="6dp"
+        android:text="샤또 마고"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/keyword2"
+        app:layout_constraintTop_toBottomOf="@+id/recommend_txt" />
+
+    <TextView
+        android:id="@+id/keyword4"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/border_search"
+        android:fontFamily="@font/nanumsquare"
+        android:padding="6dp"
+        android:text="까베르네 소비뇽"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keyword1" />
+
+    <TextView
+        android:id="@+id/keyword5"
+        android:layout_width="170dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/border_search"
+        android:fontFamily="@font/nanumsquare"
+        android:padding="6dp"
+        android:text="몬탈치노 리제르바"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/keyword4"
+        app:layout_constraintTop_toBottomOf="@+id/keyword2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

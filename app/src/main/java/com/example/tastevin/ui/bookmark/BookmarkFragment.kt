@@ -71,6 +71,6 @@ class BookmarkFragment : Fragment() {
         val list = viewModel.getWineList(db)
 
         bookmarkListAdapter.updateWines(list)
-        binding.bookmarkCount.text = "와인 검색 결과 (${list.size})"
+        binding.bookmarkCount.text = "북마크 개수 (${list.size})"
     }
 }
