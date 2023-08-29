@@ -22,7 +22,6 @@ class SearchListFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchListBinding
     private val args: SearchListFragmentArgs by navArgs()
-//    private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,36 +41,6 @@ class SearchListFragment : Fragment() {
             act.supportFragmentManager.popBackStack()
         }
 
-        // 검색버튼 누르면 현재 페이지 삭제하고 다시 생성
-        binding.searchToolbar.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.search_menu_search -> {
-                    val searchText: String = binding.searchTxt.text.toString()
-                    val action =
-                        SearchListFragmentDirections.actionNavigationSearchListToSearchListFragment(
-                            searchText
-                        )
-//                    findNavController().popBackStack()
-                    view.findNavController().navigate(action)
-                    true
-                }
-
-                else -> false
-            }
-        }
-
-        binding.searchTxt.setOnKeyListener { _, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                val searchText: String = binding.searchTxt.text.toString()
-                val action =
-                    SearchListFragmentDirections.actionNavigationSearchListToSearchListFragment(
-                        searchText
-                    )
-                view.findNavController().navigate(action)
-            }
-            true
-        }
-
         binding.searchTxt.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 binding.searchTxt.hint = ""
@@ -88,8 +57,6 @@ class SearchListFragment : Fragment() {
         })
 
 //        binding.searchListWineList.adapter = searchListAdapter
-//
-//        binding.searchToolbar.inflateMenu(R.menu.search_menu)
         val searchWine = view.findViewById<RecyclerView>(R.id.search_list_wine_list)
         searchWine.adapter = searchListAdapter
 

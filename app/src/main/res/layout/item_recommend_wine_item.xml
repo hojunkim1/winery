@@ -48,7 +48,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/wine_name"
+                android:id="@+id/wine_name_en"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -59,10 +59,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Name" />
+                tools:text="Wine Name" />
 
             <TextView
-                android:id="@+id/wine_producer"
+                android:id="@+id/wine_name_kr"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -74,9 +74,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/wine_name"
+                app:layout_constraintTop_toBottomOf="@+id/wine_name_en"
                 tools:ignore="TextContrastCheck"
-                tools:text="producer" />
+                tools:text="와인 이름" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.tastevin.MainActivity
-import com.example.tastevin.R
 import com.example.tastevin.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
@@ -21,45 +20,29 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSearchBinding.inflate(inflater)
-        binding.searchToolbar.inflateMenu(R.menu.search_menu)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        var searchText: String
-
-//        val viewModel = ViewModelProvider(this).get(SearchViewModel::class.java)
-//        viewModel.searchWines.observe(viewLifecycleOwner, Observer { wines ->
-////            wineAdapter.updateWines(wines)
-//        })
 
         binding.searchToolbar.setNavigationOnClickListener {
             val act = activity as MainActivity
             act.supportFragmentManager.popBackStack()
         }
 
-        binding.searchToolbar.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.search_menu_search -> {
-                    val searchText = binding.searchTxt.text.toString()
-//                    viewModel.searchWine(searchText)
-                    val action =
-                        SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment(
-                            searchText,
-                            "0"
-                        )
-                    view.findNavController().navigate(action)
-                    true
-                }
-
-                else -> false
-            }
+        binding.searchButton.setOnClickListener {
+            val searchText = binding.searchTxt.text.toString()
+            val action =
+                SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment(
+                    searchText,
+                    "0"
+                )
+            view.findNavController().navigate(action)
         }
 
         binding.searchTxt.setOnKeyListener { _, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KEYCODE_ENTER) {
                 val searchText = binding.searchTxt.text.toString()
-//                viewModel.searchWine(searchText)
                 val action =
                     SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment(
                         searchText,
