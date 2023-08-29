@@ -26,7 +26,6 @@ class BookmarkFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_bookmark, container, false)
-        binding.bookmarkToolbar.title = "Bookmark"
         binding.bookmarkToolbar.inflateMenu(R.menu.bookmark_menu)
 
         val layoutManager = object : LinearLayoutManager(context) {

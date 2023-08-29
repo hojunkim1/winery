@@ -21,6 +21,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.tastevin.MainActivity
 import com.example.tastevin.databinding.FragmentCameraBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -74,6 +75,11 @@ class CameraFragment : Fragment() {
         }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
+
+        binding.cameraToolbar.setNavigationOnClickListener {
+            val act = activity as MainActivity
+            act.supportFragmentManager.popBackStack()
+        }
     }
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
