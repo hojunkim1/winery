@@ -47,18 +47,19 @@
 
             <TextView
                 android:id="@+id/column_title"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="105dp"
+                android:drawableLeft="@drawable/wine_bottle"
                 android:fontFamily="@font/nanumsquare"
-                android:text="와인과 함께하는 삶"
+                android:text=" 와린이를 위한 기본 에티켓"
                 android:textAllCaps="false"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/column_img" />
 
@@ -67,15 +68,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/nanumsquare"
-                android:text="와인과 함께하는 삶"
-                android:textSize="16sp"
+                android:lineSpacingExtra="10dp"
+                android:text="@string/column_context"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/column_title" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/column_context"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/column_context" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

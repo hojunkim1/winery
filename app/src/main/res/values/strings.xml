@@ -16,4 +16,12 @@
     <string name="search_text">검색어를 입력해주세요</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="column_context">와인을 따를 때 와인을 받는 사람은 와인잔을 들거나 기울이지 않고 테이블에 두어야 합니다.
+        우리나라에서는 술을 마실 때 공손하게 두 손으로 잔을 들고 받지만 와인을 때에는 와인잔을 잡지 않거나, 예의를 표하고 싶다면 베이스 부분에 손을 가져다 대기만 해야 합니다.\n \n
+        \'레드와인\'은 잔의 1/3까지 채워서 따라주세요.
+        \'화이트 와인\'은 잔의 2/3까지 채워주시면 됩니다.\n\n
+        와인을 마실 땐 와인잔의 스템 부분을 살짝 잡고 마셔줘야 돼요.
+        와인의 보울을 잡으면 와인에 손의 체온이 전해져서 와인의 맛이 변형이 될 수 있습니다.
+    </string>
 </resources>
