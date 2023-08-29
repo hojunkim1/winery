@@ -54,7 +54,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/search_txt"
             app:layout_constraintTop_toTopOf="@id/search_txt"
-            tools:ignore="contentDescription"/>
+            tools:ignore="contentDescription" />
 
         <TextView
             android:id="@+id/total_count"

@@ -15,11 +15,8 @@ import com.example.tastevin.MainActivity
 import com.example.tastevin.R
 import com.example.tastevin.TastevinApplication
 import com.example.tastevin.data.ListData
-import com.example.tastevin.database.AppDatabase
-import com.example.tastevin.database.BookmarkDao
 import com.example.tastevin.database.WineDao
 import com.example.tastevin.databinding.FragmentDetailBinding
-import com.example.tastevin.domain.Bookmark
 import com.example.tastevin.domain.Wine
 
 class DetailFragment : Fragment() {
