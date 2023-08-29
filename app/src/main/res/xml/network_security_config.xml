@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">211.251.238.41</domain>
+        <domain includeSubdomains="true">192.168.0.13</domain> <!-- 로컬 서버 연결 ip -->
+        <domain includeSubdomains="true">211.251.238.41</domain> <!-- 클라우드 서버 연결 ip -->
     </domain-config>
 </network-security-config>
