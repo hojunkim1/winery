@@ -32,7 +32,7 @@ class SearchFragment : Fragment() {
 
         binding.searchButton.setOnClickListener {
             val searchText = binding.searchTxt.text.toString()
-            if(searchText != "") {
+            if (searchText != "") { // 입력이 없을 경우 검색 X
                 val action =
                     SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment(
                         searchText,

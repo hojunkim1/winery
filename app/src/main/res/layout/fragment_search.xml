@@ -57,7 +57,7 @@
         android:src="@drawable/camera_floating"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="contentDescription"/>
+        tools:ignore="contentDescription" />
 
     <ImageButton
         android:id="@+id/search_button"
@@ -69,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/search_txt"
         app:layout_constraintTop_toTopOf="@id/search_txt"
-        tools:ignore="contentDescription"/>
+        tools:ignore="contentDescription" />
 
     <TextView
         android:id="@+id/recommend_txt"

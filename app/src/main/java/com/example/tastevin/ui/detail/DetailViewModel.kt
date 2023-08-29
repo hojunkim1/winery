@@ -3,13 +3,8 @@ package com.example.tastevin.ui.detail
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.tastevin.TastevinApplication
-import com.example.tastevin.database.AppDatabase
-import com.example.tastevin.database.BookmarkDao
 import com.example.tastevin.database.WineDao
-import com.example.tastevin.database.entity.RoomBookmark
 import com.example.tastevin.database.entity.asDomainModel
-import com.example.tastevin.domain.Bookmark
 import com.example.tastevin.domain.Wine
 import com.example.tastevin.domain.asDatabaseModel
 import com.example.tastevin.network.NetworkWine
