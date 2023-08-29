@@ -10,7 +10,8 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-private const val BASE_URL = "http://211.251.238.41:8080/"
+//private const val BASE_URL = "http://192.168.0.13:8000/" // 로컬 서버 연결 ip
+private const val BASE_URL = "http://211.251.238.41:8080/" // 클라우드 서버 연결 ip
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
