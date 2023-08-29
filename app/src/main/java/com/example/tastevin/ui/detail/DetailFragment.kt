@@ -22,6 +22,8 @@ class DetailFragment : Fragment() {
     private lateinit var binding: FragmentDetailBinding
     private val dataset = ListData.newBoard
 
+    private var bookmarked: Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -102,5 +104,27 @@ class DetailFragment : Fragment() {
         viewModel.recommendWines.observe(viewLifecycleOwner, Observer { wines ->
             recommendListAdapter.updateWines(wines)
         })
+
+        // 북마크 버튼 초기화
+//        bookmarked = viewModel.isBookmarked(item.id)
+        bookmarked = false
+        if (bookmarked) {
+            binding.bookmarkButton.setImageResource(R.drawable.bookmark_filled)
+        } else {
+            binding.bookmarkButton.setImageResource(R.drawable.bookmark_gold)
+        }
+
+        // 북마크 버튼 클릭 시
+        // 1. 북마크에 존재 -> 북마크 제거
+        // 2. 북마크에 존재 X -> 북마크 추가
+        binding.bookmarkButton.setOnClickListener {
+            if (bookmarked) {
+                viewModel.deleteToBookmarkList(item)
+                bookmarked = false
+            } else {
+                viewModel.addToBookmarkList(item)
+                bookmarked = true
+            }
+        }
     }
 }

@@ -67,9 +67,9 @@ class Repository(private val database: AppDatabase) {
     /**
      * 와인의 id로 즉시 서버에서 북마크로 와인을 저장한다
      */
-    private fun fetchWine(id: Int) {
+    private suspend fun fetchWine(id: Int) {
         try {
-            val newWine = WineApi.retrofitService.getWineById(id).wine.asDatabaseModel()
+            val newWine = WineApi.retrofitService.getWineById(id).asDatabaseModel()
             database.wineDao().insertWine(newWine)
         } catch (e: Exception) {
             Timber.tag(TAG).e(e.toString())
@@ -80,7 +80,7 @@ class Repository(private val database: AppDatabase) {
      * 와인 데이터베이스와 북마크 데이터베이스를 동기화한다.
      * 데이터베이스 관리 시 오류가 있을 시 한 번 실행해보자.
      */
-    fun refresh() {
+    suspend fun refresh() {
         val bookmarkList = database.bookmarkDao().getAllBookmarks().map { it.wineId }
         val wineList = database.wineDao()
         for (bookmarkId in bookmarkList) {
