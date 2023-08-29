@@ -2,6 +2,7 @@ package com.example.tastevin
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -33,5 +34,8 @@ class MainActivity : AppCompatActivity() {
             setOf(R.id.home_fragment, R.id.bookmark_fragment)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // dark mode X
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 }
