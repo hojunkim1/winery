@@ -46,19 +46,21 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         @Volatile
-        private lateinit var INSTANCE: AppDatabase
+        private var INSTANCE: AppDatabase? = null
 
         fun getDatabase(context: Context): AppDatabase {
-            synchronized(this) {
-                if (!::INSTANCE.isInitialized) {
-                    INSTANCE = Room.databaseBuilder(
-                        context,
-                        AppDatabase::class.java,
-                        "app_database"
-                    ).build()
-                }
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    AppDatabase::class.java,
+                    "app_database"
+                )
+                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
+                    .build()
+                INSTANCE = instance
+                return instance
             }
-            return INSTANCE
         }
     }
 }

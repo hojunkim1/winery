@@ -1,11 +1,18 @@
 package com.example.tastevin.ui.bookmark
 
 import androidx.lifecycle.ViewModel
-import com.example.tastevin.TastevinApplication
-import com.example.tastevin.database.AppDatabase
-import com.example.tastevin.repository.Repository
+import com.example.tastevin.database.WineDao
+import com.example.tastevin.database.entity.asDomainModel
+import com.example.tastevin.domain.Wine
+import timber.log.Timber
 
 class BookmarkViewModel : ViewModel() {
-    private val db: Repository = Repository(AppDatabase.getDatabase(TastevinApplication()))
-    val list = db.bookmarkList
+
+    fun getWineList(db: WineDao): List<Wine> {
+        val list = db.getAllWines().map {
+            it.asDomainModel()
+        }
+        Timber.tag("DB").d(list.toString())
+        return list
+    }
 }

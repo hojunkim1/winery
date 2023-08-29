@@ -13,8 +13,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.tastevin.MainActivity
 import com.example.tastevin.R
+import com.example.tastevin.TastevinApplication
 import com.example.tastevin.data.ListData
+import com.example.tastevin.database.AppDatabase
+import com.example.tastevin.database.BookmarkDao
+import com.example.tastevin.database.WineDao
 import com.example.tastevin.databinding.FragmentDetailBinding
+import com.example.tastevin.domain.Bookmark
 import com.example.tastevin.domain.Wine
 
 class DetailFragment : Fragment() {
@@ -65,23 +70,17 @@ class DetailFragment : Fragment() {
         }
         binding.producerText.text = item.producer
         binding.nationText.text = item.nation
+        binding.priceText.text = item.price
 
         // TODO typeText 레이아웃 추가
-//        binding.typeText.text = item.type
-        var sweetNum = item.sweet.toString()
-        val sweetRating = item.sweet.toFloat() // Convert the value to float for the rating
-        binding.ratingSweet.rating = sweetRating
+        binding.typeText.text = item.type
 
-        var acidityNum = item.acidity.toString()
+        // Convert the value to float for the rating
+        binding.ratingSweet.rating = item.sweet.toFloat()
         binding.ratingAcidity.rating = item.acidity.toFloat()
-
-        var bodyNum = item.body.toString()
         binding.ratingBody.rating = item.body.toFloat()
-
-        var tanninNum = item.body.toString()
         binding.ratingTannin.rating = item.tannin.toFloat()
 
-        binding.priceText.text = item.price
         binding.foodListText.text = item.food
 
 
@@ -106,25 +105,33 @@ class DetailFragment : Fragment() {
         })
 
         // 북마크 버튼 초기화
-//        bookmarked = viewModel.isBookmarked(item.id)
-        bookmarked = false
-        if (bookmarked) {
-            binding.bookmarkButton.setImageResource(R.drawable.bookmark_filled)
-        } else {
-            binding.bookmarkButton.setImageResource(R.drawable.bookmark_gold)
-        }
+        val bookmarkDB: WineDao = (activity?.application as TastevinApplication).database.wineDao()
+        val bookmarkList: List<Wine> = viewModel.getBookmarkList(bookmarkDB)
+
+        bookmarked = viewModel.isBookmarked(bookmarkList, item.id)
+        updateBookmarkButton(bookmarked)
 
         // 북마크 버튼 클릭 시
         // 1. 북마크에 존재 -> 북마크 제거
         // 2. 북마크에 존재 X -> 북마크 추가
         binding.bookmarkButton.setOnClickListener {
             if (bookmarked) {
-                viewModel.deleteToBookmarkList(item)
-                bookmarked = false
+                viewModel.deleteToBookmarkList(bookmarkDB, item)
+                updateBookmarkButton(false)
             } else {
-                viewModel.addToBookmarkList(item)
-                bookmarked = true
+                viewModel.addToBookmarkList(bookmarkDB, item)
+                updateBookmarkButton(true)
             }
+        }
+    }
+
+    private fun updateBookmarkButton(bookmark: Boolean) {
+        if (bookmark) {
+            binding.bookmarkButton.setImageResource(R.drawable.bookmark_filled)
+            bookmarked = true
+        } else {
+            binding.bookmarkButton.setImageResource(R.drawable.bookmark_gold)
+            bookmarked = false
         }
     }
 }

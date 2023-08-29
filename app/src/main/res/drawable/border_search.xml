@@ -20,7 +20,7 @@
         android:top="1dp">
         <shape android:shape="rectangle">
 
-            <solid android:color="@color/light_purple"/>
+            <solid android:color="@color/light_purple" />
 
             <corners
                 android:bottomLeftRadius="100dp"

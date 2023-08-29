@@ -7,15 +7,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tastevin.R
+import com.example.tastevin.TastevinApplication
 import com.example.tastevin.databinding.FragmentBookmarkBinding
 import com.example.tastevin.domain.Wine
 import com.example.tastevin.ui.detail.WineItemClickListener
-import com.example.tastevin.ui.search.result.SearchListAdapter
 
 class BookmarkFragment : Fragment() {
 
@@ -29,6 +28,18 @@ class BookmarkFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_bookmark, container, false)
         binding.bookmarkToolbar.title = "Bookmark"
         binding.bookmarkToolbar.inflateMenu(R.menu.bookmark_menu)
+
+        val layoutManager = object : LinearLayoutManager(context) {
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+
+            override fun canScrollHorizontally(): Boolean {
+                return false
+            }
+        }
+        binding.bookmarkList.layoutManager = layoutManager
+
         return binding.root
     }
 
@@ -47,7 +58,7 @@ class BookmarkFragment : Fragment() {
         }
 
         // 북마크 아이템 클릭 리스너
-        val bookmarkListAdapter = BookmarkAdapter(object: WineItemClickListener{
+        val bookmarkListAdapter = BookmarkAdapter(object : WineItemClickListener {
             override fun onWineItemClicked(item: Wine) {
                 val bundle = Bundle().apply {
                     putParcelable("selectedWine", item)
@@ -57,10 +68,10 @@ class BookmarkFragment : Fragment() {
         })
         binding.bookmarkList.adapter = bookmarkListAdapter
 
+        val db = (activity?.application as TastevinApplication).database.wineDao()
+        val list = viewModel.getWineList(db)
 
-        // 북마크 리스트 DB 불러오기
-        val viewModel = ViewModelProvider(this).get(BookmarkViewModel::class.java)
-
-        bookmarkListAdapter.updateWines(viewModel.list)
+        bookmarkListAdapter.updateWines(list)
+        binding.bookmarkCount.text = "와인 검색 결과 (${list.size})"
     }
 }
