@@ -27,14 +27,14 @@ interface Service {
      * id 를 전달하면 해당 와인과 추천 와인 데이터가 온다.
      * 사용 예 : .getRecommendationById(1)
      */
-    @GET("/wines/{wine_id}")
+    @GET("/wines/recommend/{wine_id}")
     fun getRecommendationById(@Path("wine_id") id: Int): NetworkWineRecommendation
 
     /**
      * id 를 전달하면 해당 와인 데이터가 온다.
      * 사용 예 : .getWineById(1)
      */
-    @GET("/wineeeee/{wine_id}")
+    @GET("/wines/{wine_id}")
     suspend fun getWineById(
         @Path("wine_id") id: Int
     ): NetworkWine
