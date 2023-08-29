@@ -20,10 +20,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/chevron_left" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/silver"
+        app:layout_constraintBottom_toBottomOf="@+id/search_toolbar"
+        tools:ignore="MissingConstraints" />
+
     <EditText
         android:id="@+id/search_txt"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="40dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="65dp"
