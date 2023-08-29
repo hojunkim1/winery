@@ -15,6 +15,7 @@ import androidx.exifinterface.media.ExifInterface
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.tastevin.MainActivity
 import com.example.tastevin.databinding.FragmentSelectImageBinding
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
@@ -66,6 +67,11 @@ class SelectImageFragment : Fragment() {
         binding.selectRetryButton.setOnClickListener {
             val action = SelectImageFragmentDirections.actionNavigationSelectImageToCameraFragment()
             findNavController().navigate(action)
+        }
+
+        binding.selectImageToolbar.setNavigationOnClickListener {
+            val act = activity as MainActivity
+            act.supportFragmentManager.popBackStack()
         }
     }
 
