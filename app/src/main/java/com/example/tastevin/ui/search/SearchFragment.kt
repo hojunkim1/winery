@@ -32,12 +32,14 @@ class SearchFragment : Fragment() {
 
         binding.searchButton.setOnClickListener {
             val searchText = binding.searchTxt.text.toString()
-            val action =
-                SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment(
-                    searchText,
-                    "0"
-                )
-            view.findNavController().navigate(action)
+            if (searchText != "") { // 입력이 없을 경우 검색 X
+                val action =
+                    SearchFragmentDirections.actionNavigationSearchFragmentToSearchListFragment(
+                        searchText,
+                        "0"
+                    )
+                view.findNavController().navigate(action)
+            }
         }
 
         binding.searchTxt.setOnKeyListener { _, keyCode, event ->
