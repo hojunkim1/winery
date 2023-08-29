@@ -10,7 +10,7 @@
     <!--  OCR Result  -->
     <string name="ocr_reset_button">처음으로</string>
     <!--  Select Image  -->
-    <string name="select_ocr_button">텍스트 인식</string>
+    <string name="select_ocr_button">✓</string>
     <string name="select_retry_button">다시 촬영하기</string>
     <!--  Search  -->
     <string name="search_text">검색어를 입력해주세요</string>
