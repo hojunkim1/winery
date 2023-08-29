@@ -26,8 +26,8 @@ class BookmarkAdapter(private val clickListener: WineItemClickListener) :
      */
     class BookmarkViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val wineImage: ImageView = view.findViewById(R.id.wine_image)
-        val wineName: TextView = view.findViewById(R.id.wine_name)
-        val wineProducer: TextView = view.findViewById(R.id.wine_producer)
+        val wineNameEn: TextView = view.findViewById(R.id.wine_name_en)
+        val wineNameKr: TextView = view.findViewById(R.id.wine_name_kr)
     }
 
     /**
@@ -51,11 +51,12 @@ class BookmarkAdapter(private val clickListener: WineItemClickListener) :
             .load(item.url)
             .into(holder.wineImage)
         if (item.nameEn != null) {
-            holder.wineName.text = item.nameEn
+            holder.wineNameEn.text = item.nameEn
+            holder.wineNameKr.text = item.nameKr
         } else {
-            holder.wineName.text = item.nameKr
+            holder.wineNameEn.text = item.nameKr
+            holder.wineNameKr.text = ""
         }
-        holder.wineProducer.text = item.producer
 
         holder.itemView.setOnClickListener {
             clickListener.onWineItemClicked(item)
