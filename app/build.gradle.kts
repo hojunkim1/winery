@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.tastevin"
+    namespace = "com.taba.tastevin"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.tastevin"
+        applicationId = "com.taba.tastevin"
         minSdk = 29
         targetSdk = 34
         versionCode = 1
