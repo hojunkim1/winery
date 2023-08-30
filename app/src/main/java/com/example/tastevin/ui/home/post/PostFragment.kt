@@ -44,5 +44,4 @@ class PostFragment : Fragment() {
 
         return binding.root
     }
-
 }

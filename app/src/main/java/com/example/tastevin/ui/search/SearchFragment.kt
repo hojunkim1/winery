@@ -1,7 +1,6 @@
 package com.example.tastevin.ui.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.LayoutInflater

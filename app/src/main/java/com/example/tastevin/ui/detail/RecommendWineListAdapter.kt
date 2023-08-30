@@ -1,5 +1,6 @@
 package com.example.tastevin.ui.detail
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ class RecommendWineListAdapter(private val clickListener: WineItemClickListener)
     RecyclerView.Adapter<RecommendWineListAdapter.RecommendWineListViewHolder>() {
     private var dataset: List<Wine> = listOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateWines(newWines: List<Wine>) {
         dataset = newWines
         notifyDataSetChanged()

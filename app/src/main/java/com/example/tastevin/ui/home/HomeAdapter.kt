@@ -1,5 +1,6 @@
 package com.example.tastevin.ui.home;
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ class HomeAdapter(private val clickListener: WineItemClickListener) :
     RecyclerView.Adapter<HomeAdapter.BoardListViewHolder>() {
     private var dataset: List<Wine> = listOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateWines(newWines: List<Wine>) {
         dataset = newWines
         notifyDataSetChanged()
@@ -57,5 +59,3 @@ class HomeAdapter(private val clickListener: WineItemClickListener) :
 
     override fun getItemCount() = dataset.size
 }
-
-

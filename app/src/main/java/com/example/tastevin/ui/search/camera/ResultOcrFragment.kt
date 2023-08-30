@@ -7,7 +7,6 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +19,7 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import timber.log.Timber
 import java.io.FileNotFoundException
 import java.io.InputStream
 
@@ -86,7 +86,7 @@ class ResultOcrFragment : Fragment() {
             bitmap?.let {
                 image = InputImage.fromBitmap(it, 0)
             }
-            Log.e("setImage", "이미지 to 비트맵")
+            Timber.tag("setImage").e("이미지 to 비트맵")
         } catch (e: FileNotFoundException) {
             e.printStackTrace()
         }

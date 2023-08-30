@@ -11,11 +11,16 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class SearchListViewModel : ViewModel() {
+
+    companion object {
+        const val JSON_TAG = "JSON"
+    }
+
     val searchWines = MutableLiveData<List<Wine>>()
 
     fun searchWine(searchText: String, isOcr: String) {
         viewModelScope.launch {
-            Timber.tag("JSON").d("Network started")
+            Timber.tag(JSON_TAG).d("Network started")
             try {
                 val networkWines = if (isOcr == "0") {
                     WineApi.retrofitService.searchWine(searchText, "")
@@ -24,9 +29,9 @@ class SearchListViewModel : ViewModel() {
                 }
                 val wines = networkWines.map { it.asDomainModel() }
                 searchWines.postValue(wines)
-                Timber.tag("JSON").d(networkWines.toString())
+                Timber.tag(JSON_TAG).d(networkWines.toString())
             } catch (e: Exception) {
-                Timber.tag("JSON").e(e.toString())
+                Timber.tag(JSON_TAG).e(e.toString())
             }
         }
     }

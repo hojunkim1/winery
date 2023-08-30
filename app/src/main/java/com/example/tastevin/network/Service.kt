@@ -10,7 +10,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-//private const val BASE_URL = "http://192.168.0.13:8000/" // 로컬 서버 연결 ip
+// private const val BASE_URL = "http://192.168.0.13:8000/" // 로컬 서버 연결 ip
 private const val BASE_URL = "http://211.251.238.41:8080/" // 클라우드 서버 연결 ip
 
 private val moshi = Moshi.Builder()
@@ -23,13 +23,6 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface Service {
-
-    /**
-     * id 를 전달하면 해당 와인과 추천 와인 데이터가 온다.
-     * 사용 예 : .getRecommendationById(1)
-     */
-    @GET("/wines/recommend/{wine_id}")
-    fun getRecommendationById(@Path("wine_id") id: Int): NetworkWineRecommendation
 
     /**
      * id 를 전달하면 해당 와인 데이터가 온다.

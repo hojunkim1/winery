@@ -11,26 +11,11 @@ import com.example.tastevin.databinding.FragmentColumnBinding
 class ColumnFragment : Fragment() {
     private lateinit var binding: FragmentColumnBinding
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        arguments?.let {
-//        }
-//    }
-
-    companion object {
-        private const val READ_EXTERNAL_STORAGE_PERMISSION_CODE = 1
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentColumnBinding.inflate(inflater)
-
-        // Inflate the layout for this fragment
-//        val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
-//        actionBar?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
         return binding.root
     }
 
@@ -40,7 +25,4 @@ class ColumnFragment : Fragment() {
             act.supportFragmentManager.popBackStack()
         }
     }
-
-
 }
-

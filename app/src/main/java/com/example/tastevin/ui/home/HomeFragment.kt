@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -36,9 +35,6 @@ class HomeFragment : Fragment() {
         val layoutManager =
             GridLayoutManager(requireContext(), spanCount, RecyclerView.HORIZONTAL, false)
         recyclerView.layoutManager = layoutManager
-
-        //binding = FragmentHomeBinding.inflate(inflater)
-        //binding.homeToolbar.title = "tastevin"
 
         binding.homeToolbar.inflateMenu(R.menu.home_menu)
         return binding.root
@@ -75,9 +71,9 @@ class HomeFragment : Fragment() {
         val rankWine = view.findViewById<RecyclerView>(R.id.rank_wine)
         rankWine.adapter = wineAdapter
 
-        val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        viewModel.topWines.observe(viewLifecycleOwner, Observer { wines ->
+        val viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        viewModel.topWines.observe(viewLifecycleOwner) { wines ->
             wineAdapter.updateWines(wines)
-        })
+        }
     }
 }

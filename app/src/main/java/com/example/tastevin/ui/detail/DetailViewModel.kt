@@ -10,33 +10,33 @@ import com.example.tastevin.domain.asDatabaseModel
 import com.example.tastevin.network.NetworkWine
 import com.example.tastevin.network.WineApi
 import com.example.tastevin.network.asDomainModel
-import com.example.tastevin.repository.Repository
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class DetailViewModel : ViewModel() {
+
+    companion object {
+        const val DB_TAG = "REPOSITORY"
+        const val JSON_TAG = "JSON"
+    }
+
     val recommendWines = MutableLiveData<List<Wine>>()
 
     fun recommendWine(item: Wine) {
         viewModelScope.launch {
-            Timber.tag("JSON").d("Network started")
+            Timber.tag(JSON_TAG).d("Network started")
             try {
-//                val networkWines =  WineApi.retrofitService.getRecommendationById(item.id)
-//                val recommendationWines = networkWines.asDomainModel()
-//                recommendWines.postValue(recommendationWines)
-//                Timber.tag("JSON").d(networkWines.toString())
-
                 val networkWines: List<NetworkWine> = listOf(
                     WineApi.retrofitService.getWineById(item.recommend1),
                     WineApi.retrofitService.getWineById(item.recommend2),
                     WineApi.retrofitService.getWineById(item.recommend3)
                 )
-                Timber.tag("JSON").d(networkWines.toString())
+                Timber.tag(JSON_TAG).d(networkWines.toString())
                 val wines = networkWines.map { it.asDomainModel() }
                 recommendWines.postValue(wines)
-                Timber.tag("JSON").d(networkWines.toString())
+                Timber.tag(JSON_TAG).d(networkWines.toString())
             } catch (e: Exception) {
-                Timber.tag("JSON").e(e.toString())
+                Timber.tag(JSON_TAG).e(e.toString())
             }
         }
     }
@@ -45,7 +45,7 @@ class DetailViewModel : ViewModel() {
         val list = db.getAllWines().map {
             it.asDomainModel()
         }
-        Timber.tag("DB").d(list.toString())
+        Timber.tag(DB_TAG).d(list.toString())
         return list
     }
 
@@ -68,7 +68,7 @@ class DetailViewModel : ViewModel() {
         try {
             db.insertWine(item.asDatabaseModel())
         } catch (e: Exception) {
-            Timber.tag(Repository.TAG).e(e.toString())
+            Timber.tag(DB_TAG).e(e.toString())
         }
     }
 
@@ -79,7 +79,7 @@ class DetailViewModel : ViewModel() {
         try {
             db.deleteWine(item.asDatabaseModel())
         } catch (e: Exception) {
-            Timber.tag(Repository.TAG).e(e.toString())
+            Timber.tag(DB_TAG).e(e.toString())
         }
     }
 }

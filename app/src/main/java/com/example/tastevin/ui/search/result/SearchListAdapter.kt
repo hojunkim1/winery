@@ -1,5 +1,6 @@
 package com.example.tastevin.ui.search.result
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +15,9 @@ import com.example.tastevin.ui.detail.WineItemClickListener
 class SearchListAdapter(private val clickListener: WineItemClickListener) :
     RecyclerView.Adapter<SearchListAdapter.BoardListViewHolder>() {
 
-    //    private val dataset = ListData.newBoard
     private var dataset: List<Wine> = listOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateWines(newWines: List<Wine>) {
         dataset = newWines
         notifyDataSetChanged()
@@ -58,7 +59,5 @@ class SearchListAdapter(private val clickListener: WineItemClickListener) :
         }
     }
 
-    override fun getItemCount(): Int {
-        return dataset.size
-    }
+    override fun getItemCount() = dataset.size
 }

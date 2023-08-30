@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,8 +51,7 @@ class DetailFragment : Fragment() {
             act.supportFragmentManager.popBackStack()
         }
 
-//        val item = dataset[0]
-        val item = arguments?.getParcelable<Wine>("selectedWine") ?: dataset[0]
+        val item = arguments?.getParcelable("selectedWine") ?: dataset[0]
 
         Glide.with(binding.wineImage)
             .load(item.url)
@@ -69,7 +67,6 @@ class DetailFragment : Fragment() {
         binding.nationText.text = item.nation
         binding.priceText.text = item.price
 
-        // TODO typeText 레이아웃 추가
         binding.typeText.text = item.type
 
         // Convert the value to float for the rating
@@ -79,7 +76,6 @@ class DetailFragment : Fragment() {
         binding.ratingTannin.rating = item.tannin.toFloat()
 
         binding.foodListText.text = item.food
-
 
         val recommendListAdapter = RecommendWineListAdapter(object : WineItemClickListener {
             override fun onWineItemClicked(item: Wine) {
@@ -97,9 +93,9 @@ class DetailFragment : Fragment() {
         val viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
 
         viewModel.recommendWine(item)
-        viewModel.recommendWines.observe(viewLifecycleOwner, Observer { wines ->
+        viewModel.recommendWines.observe(viewLifecycleOwner) { wines ->
             recommendListAdapter.updateWines(wines)
-        })
+        }
 
         // 북마크 버튼 초기화
         val bookmarkDB: WineDao = (activity?.application as TastevinApplication).database.wineDao()

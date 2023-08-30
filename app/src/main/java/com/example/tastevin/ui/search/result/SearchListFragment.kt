@@ -26,9 +26,7 @@ class SearchListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSearchListBinding.inflate(inflater)
-
         binding.searchTxt.hint = args.searchText
-
         return binding.root
     }
 
@@ -54,18 +52,14 @@ class SearchListFragment : Fragment() {
             }
         })
 
-//        binding.searchListWineList.adapter = searchListAdapter
         val searchWine = view.findViewById<RecyclerView>(R.id.search_list_wine_list)
         searchWine.adapter = searchListAdapter
 
         val viewModel = ViewModelProvider(this).get(SearchListViewModel::class.java)
-
         viewModel.searchWine(args.searchText, args.isOcr)
-
         viewModel.searchWines.observe(viewLifecycleOwner, Observer { wines ->
             searchListAdapter.updateWines(wines)
             binding.totalCount.text = "와인 검색 결과 (${wines.size})"
         })
-
     }
 }

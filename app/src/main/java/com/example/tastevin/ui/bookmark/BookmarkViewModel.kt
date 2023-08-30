@@ -8,11 +8,15 @@ import timber.log.Timber
 
 class BookmarkViewModel : ViewModel() {
 
+    companion object {
+        const val DB_TAG = "DB"
+    }
+
     fun getWineList(db: WineDao): List<Wine> {
         val list = db.getAllWines().map {
             it.asDomainModel()
         }
-        Timber.tag("DB").d(list.toString())
+        Timber.tag(DB_TAG).d(list.toString())
         return list
     }
 }

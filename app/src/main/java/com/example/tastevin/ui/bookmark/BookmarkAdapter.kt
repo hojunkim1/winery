@@ -1,5 +1,6 @@
 package com.example.tastevin.ui.bookmark
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ class BookmarkAdapter(private val clickListener: WineItemClickListener) :
 
     private var dataset: List<Wine> = listOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateWines(newWines: List<Wine>) {
         dataset = newWines
         notifyDataSetChanged()
@@ -63,7 +65,5 @@ class BookmarkAdapter(private val clickListener: WineItemClickListener) :
         }
     }
 
-    override fun getItemCount(): Int {
-        return dataset.size
-    }
+    override fun getItemCount() = dataset.size
 }
