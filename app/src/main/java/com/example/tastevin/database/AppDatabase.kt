@@ -9,20 +9,6 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.tastevin.database.entity.RoomBookmark
-import com.example.tastevin.database.entity.RoomWine
-
-@Dao
-interface BookmarkDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertBookmark(bookmark: RoomBookmark)
-
-    @Query("SELECT * FROM roombookmark")
-    fun getAllBookmarks(): List<RoomBookmark>
-
-    @Delete
-    fun deleteBookmark(bookmark: RoomBookmark)
-}
 
 @Dao
 interface WineDao {
@@ -32,17 +18,13 @@ interface WineDao {
     @Query("SELECT * FROM roomwine")
     fun getAllWines(): List<RoomWine>
 
-    @Query("SELECT * FROM roomwine WHERE wine_id = :id")
-    fun getWineById(id: Int): RoomWine
-
     @Delete
     fun deleteWine(wine: RoomWine)
 }
 
-@Database(entities = [RoomWine::class, RoomBookmark::class], version = 1)
+@Database(entities = [RoomWine::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun wineDao(): WineDao
-    abstract fun bookmarkDao(): BookmarkDao
 
     companion object {
         @Volatile

@@ -21,7 +21,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.tastevin.MainActivity
 import com.example.tastevin.databinding.FragmentCameraBinding
-import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.ExecutorService
@@ -30,7 +29,6 @@ import java.util.concurrent.Executors
 class CameraFragment : Fragment() {
 
     companion object {
-        private const val TAG = "CameraXFragment"
         private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = mutableListOf(
@@ -112,8 +110,7 @@ class CameraFragment : Fragment() {
                     this, cameraSelector, preview, imageCapture
                 )
 
-            } catch (exc: Exception) {
-                Timber.tag(TAG).e(exc, "Use case binding failed")
+            } catch (_: Exception) {
             }
         }, ContextCompat.getMainExecutor(requireContext()))
     }
@@ -147,13 +144,9 @@ class CameraFragment : Fragment() {
             ContextCompat.getMainExecutor(requireContext()),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exc: ImageCaptureException) {
-                    Timber.tag(TAG).e(exc, "Photo capture failed: ${exc.message}")
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                    val msg = "Photo capture succeeded: ${output.savedUri}"
-                    Timber.tag(TAG).d(msg)
-
                     output.savedUri?.let { savedUri ->
                         val action =
                             CameraFragmentDirections.actionNavigationCameraToSelectImageFragment(

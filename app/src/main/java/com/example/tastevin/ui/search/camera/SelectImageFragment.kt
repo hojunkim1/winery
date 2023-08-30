@@ -20,7 +20,6 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
-import timber.log.Timber
 import java.io.FileNotFoundException
 import java.io.InputStream
 
@@ -94,7 +93,6 @@ class SelectImageFragment : Fragment() {
             bitmap?.let {
                 image = InputImage.fromBitmap(it, 0)
             }
-            Timber.tag("setImage").e("이미지 to 비트맵")
         } catch (e: FileNotFoundException) {
             e.printStackTrace()
         }
@@ -120,7 +118,6 @@ class SelectImageFragment : Fragment() {
         image?.let {
             recognizer.process(it)
                 .addOnSuccessListener { visionText ->
-                    Timber.tag("텍스트 인식").e("성공")
                     val resultText = visionText.text
                     val action =
                         SelectImageFragmentDirections.actionNavigationSelectImageToSearchListFragment(
@@ -130,7 +127,6 @@ class SelectImageFragment : Fragment() {
                     findNavController().navigate(action)
                 }
                 .addOnFailureListener { e ->
-                    Timber.tag("텍스트 인식").e("실패: ${e.message}")
                     val resultText = "텍스트 인식 실패"
                     val action =
                         SelectImageFragmentDirections.actionNavigationSelectImageToSearchListFragment(

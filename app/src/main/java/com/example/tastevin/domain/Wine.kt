@@ -2,7 +2,7 @@ package com.example.tastevin.domain
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.example.tastevin.database.entity.RoomWine
+import com.example.tastevin.database.RoomWine
 
 data class Wine(
     val id: Int,
@@ -41,8 +41,7 @@ data class Wine(
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt()
-    ) {
-    }
+    )
 
     override fun describeContents(): Int {
         TODO("Not yet implemented")

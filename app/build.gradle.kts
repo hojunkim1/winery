@@ -22,7 +22,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -71,7 +72,6 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("io.coil-kt:coil:2.2.2")
-    implementation("com.jakewharton.timber:timber:5.0.1")
 
     // Room
     val room_version = "2.5.2"
@@ -91,9 +91,6 @@ dependencies {
 
     // Text Recognition
     implementation("com.google.android.gms:play-services-mlkit-text-recognition:19.0.0")
-
-    // logging
-    implementation("com.jakewharton.timber:timber:5.0.1")
 
     // Test
     testImplementation("junit:junit:4.13.2")

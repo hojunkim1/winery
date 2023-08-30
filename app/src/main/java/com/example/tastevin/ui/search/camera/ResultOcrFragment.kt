@@ -19,7 +19,6 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
-import timber.log.Timber
 import java.io.FileNotFoundException
 import java.io.InputStream
 
@@ -86,7 +85,6 @@ class ResultOcrFragment : Fragment() {
             bitmap?.let {
                 image = InputImage.fromBitmap(it, 0)
             }
-            Timber.tag("setImage").e("이미지 to 비트맵")
         } catch (e: FileNotFoundException) {
             e.printStackTrace()
         }

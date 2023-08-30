@@ -1,4 +1,4 @@
-package com.example.tastevin.database.entity
+package com.example.tastevin.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
