@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.tastevin"
+    namespace = "com.taba.tastevin"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.tastevin"
+        applicationId = "com.taba.tastevin"
         minSdk = 29
         targetSdk = 34
         versionCode = 1
@@ -23,6 +23,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -59,24 +60,27 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 
     // Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.0")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.1")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.1")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
 
     // Network
     implementation("com.squareup.moshi:moshi-kotlin:1.13.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("io.coil-kt:coil:2.2.2")
-    implementation("com.jakewharton.timber:timber:5.0.1")
 
     // Room
-    val room_version = "2.5.0"
+    val room_version = "2.5.2"
     implementation("androidx.room:room-runtime:$room_version")
     ksp("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
 
     // Camera
-    val cameraxVersion = "1.2.1"
+    val cameraxVersion = "1.2.3"
     implementation("androidx.camera:camera-core:${cameraxVersion}")
     implementation("androidx.camera:camera-camera2:${cameraxVersion}")
     implementation("androidx.camera:camera-lifecycle:${cameraxVersion}")
@@ -88,15 +92,8 @@ dependencies {
     // Text Recognition
     implementation("com.google.android.gms:play-services-mlkit-text-recognition:19.0.0")
 
-    // logging
-    implementation("com.jakewharton.timber:timber:4.7.1")
-
     // Test
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    // Image url
-    implementation("com.github.bumptech.glide:glide:4.12.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 }

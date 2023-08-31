@@ -19,3 +19,17 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# Please add these rules to your existing keep rules in order to suppress warnings.
+
+# Rules for BouncyCastle
+#-keep class org.bouncycastle.jsse.** { *; }
+
+# Rules for Conscrypt
+#-keep class org.conscrypt.** { *; }
+
+# Rules for OpenJSSE
+#-keep class org.openjsse.** { *; }
+
+# Rules for OkHttp
+#-keep class okhttp3.** { *; }
+#-dontwarn okhttp3.**
