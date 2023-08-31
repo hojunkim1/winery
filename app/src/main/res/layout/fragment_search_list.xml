@@ -38,6 +38,7 @@
             android:maxLines="1"
             android:minHeight="48dp"
             android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             app:layout_constraintBottom_toBottomOf="@id/search_toolbar"
             app:layout_constraintEnd_toEndOf="@+id/search_toolbar"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,9 +47,11 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2px"
+            android:layout_height="2dp"
             android:background="@color/silver"
             app:layout_constraintBottom_toBottomOf="@+id/search_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints" />
 
         <ImageButton
@@ -81,6 +84,7 @@
             android:id="@+id/search_list_wine_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="8dp"
             android:clipToPadding="false"
             android:orientation="vertical"
             android:scrollbars="vertical"
