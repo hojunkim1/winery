@@ -28,17 +28,6 @@ class BookmarkFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_bookmark, container, false)
         binding.bookmarkToolbar.inflateMenu(R.menu.bookmark_menu)
 
-        val layoutManager = object : LinearLayoutManager(context) {
-            override fun canScrollVertically(): Boolean {
-                return false
-            }
-
-            override fun canScrollHorizontally(): Boolean {
-                return false
-            }
-        }
-        binding.bookmarkList.layoutManager = layoutManager
-
         return binding.root
     }
 
